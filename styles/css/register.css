@@ -1,0 +1,129 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar {
+    background-color: #333;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .navbar-logo {
+    text-align: center;
+    flex-grow: 1;
+    display: none; /* Initially hide logo */
+  }
+  
+  .navbar-logo img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .navbar-links {
+    display: none;
+    text-align: center;
+  }
+  
+  .navbar-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .navbar-links a:hover {
+    color: #ddd;
+  }
+  
+  .login-register {
+    text-align: right;
+  }
+  
+  .login-register a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+  }
+  
+  .login-register a:hover {
+    color: #ddd;
+  }
+  
+  .hamburger-menu {
+    display: none;
+  }
+
+
+
+
+  
+  
+  @media screen and (min-width: 768px) {
+    .navbar-logo {
+      display: block; /* Show logo on larger screens */
+    }
+  
+    .navbar-links {
+      display: flex;
+    }
+  
+    .login-register {
+      display: flex;
+    }
+  
+    .hamburger-menu {
+      display: none;
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .navbar {
+      flex-direction: column;
+      padding: 10px;
+    }
+  
+    .navbar-logo {
+      text-align: center;
+    }
+  
+    .navbar-links {
+      display: none;
+    }
+  
+    .login-register {
+      display: none;
+    }
+  
+    .hamburger-menu {
+      display: block;
+      text-align: right;
+    }
+  
+    .hamburger-icon {
+      display: inline-block;
+      cursor: pointer;
+      padding: 10px;
+    }
+  
+    .hamburger-menu-items {
+      display: none;
+      position: absolute;
+      background-color: #333;
+      width: 100%;
+      text-align: center;
+      top: 60px;
+      z-index: 1;
+    }
+  
+    .hamburger-menu-items a {
+      display: block;
+      padding: 10px;
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  
