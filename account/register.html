@@ -8,7 +8,9 @@
     <link rel="icon" href="../assets/favicon-32x32.png">
     <link rel="stylesheet" href="../styles/css/register.css">
     <link rel="stylesheet" href="../styles/css/nav-footer.css">
-    <script src="../js/navigation.mjs" defer=""></script>
+    <script src="../js/hamburger.mjs" defer=""></script>
+    <script src="../js/pages/register.mjs" defer=""></script>
+    
 </head>
 
 
@@ -48,9 +50,27 @@
   </header>
 
     <main>
-        <section class="latest-post">
-            <div class="latest-carousel"></div>
-        </section>
+        <div class="form-container">
+            <h1>Register</h1>
+            <hr>
+            <form id="registerForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter username" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter password (min 8 characters)" required>
+                <input type="checkbox" class="icon-container" onclick="togglePassword('password')">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+                <input type="checkbox" class="icon-container" onclick="togglePassword('confirmPassword')">
+                <button type="submit">Register</button>
+            </form>
+
+            <div id="errorMessage" style="color: red;"></div>
+            <p>By continuing, you agree to our <a href="#" id="termsLink">Terms of Service</a>and<a href="#" id="privacyLink">Privacy Policy</a>.</p>
+            <p>Already have a user? <a href="login.html" id="loginLink">Login here</a></p>
+        </div>
     </main>
 
     <footer>
@@ -79,7 +99,6 @@
         </div>   
         <p class="foot-end">Noah - Rocking it since 2014</p>
     </footer>
-
 
 
 </body>

@@ -3,7 +3,6 @@
 
 body {
     margin: 0;
-    background-color: blue;
     font-family: "Roboto Serif", sans-serif;
 }
 
@@ -101,6 +100,11 @@ footer {
     margin-top: 10%;
 }
 
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
 .foot-nav-container {
     margin-left: 15%;
     margin-right: 15%;
@@ -133,10 +137,7 @@ footer {
     text-decoration: underline;
 }
 
-.admin-foot a {
-    text-decoration: none;
-    color: white;
-}
+
 
 .admin-foot {
     text-align: center;
@@ -144,7 +145,7 @@ footer {
 
 
 .admin-foot-link1 {
-    padding-right: 1%;
+    padding-right: 2%;
     border-right: 2px solid white;
     outline: none;
 }
@@ -172,13 +173,14 @@ footer {
     }
 
     .foot-nav-container {
-        font-size: 20px;
+        font-size: 25px;
 
     }
 
     .foot-logo {
         max-width: 200px;
     }
+
 
 }
 
