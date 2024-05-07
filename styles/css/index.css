@@ -2,4 +2,29 @@
 @import url(/styles/css/nav-footer.css);
 
 
+#display-container {
+    margin-left: 15%;
+    margin-right: 15%;
+    flex-wrap: wrap;
+    flex-direction: column;
+    columns: 3;
+    justify-content: space-between;
 
+}
+
+.blogcard-wrapper {
+    height: 700px;
+    width: 480px;
+    background-color: aqua;
+   
+}
+
+.blogcard-container {
+    text-align: left;
+    height: auto;
+    padding: 5%;
+    margin-bottom: 20%;
+    background-color: blueviolet;
+    height: 700px;
+    width: 480px;
+}
