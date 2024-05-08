@@ -1,33 +1,34 @@
 
-document.getElementById("registerForm").addEventListener("submit", function(event) {
+import { registerUser } from "../utils/registerUser.mjs";
+
+
+
+const registerForm = document.querySelector('#registerForm');
+
+registerForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    registerUser();
+    const [nameInput, emailInput, passwordInput] = event.target.elements;
+    const name = nameInput.value;
+    const email = emailInput.value;
+    const password = passwordInput.value;
+    validateAndSubmitForm(name, email, password);
 });
 
 
-function togglePassword(fieldId) {
-    var x = document.getElementById(fieldId);
-    if (x.type === "password") {
-        x.type = "text";
-    } else {
-        x.type = "password";
-    }
-}
 
+function validateAndSubmitForm() {
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    let errorMessage = "";
 
-function registerUser() {
-    var username = document.getElementById("username").value;
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
-    var confirmPassword = document.getElementById("confirmPassword").value;
-    var errorMessage = "";
-
-    var usernameRegex = /^[a-zA-Z]+$/;
-    if (!usernameRegex.test(username)) {
+    const nameRegex = /^[a-zA-Z\- ]+$/;
+    if (!nameRegex.test(name)) {
         errorMessage += "Username must contain only letters.\n";
     }
 
-    var emailRegex = /^\S+@\S+\.\S+$/;
+    const emailRegex = /^\S+@\S+\.\S+$/;
     if (!emailRegex.test(email)) {
         errorMessage += "Invalid email address.\n";
     }
@@ -44,10 +45,29 @@ function registerUser() {
         document.getElementById("errorMessage").textContent = errorMessage;
     } else {
         document.getElementById("errorMessage").textContent = "";
-        // Send data here
-        console.log("whoop");
+        registerUser(name, email, password);
+        console.log("Validation passed, submitting form...");
     }
 }
 
+const passwordInput = document.getElementById("password");
+const confirmPasswordInput = document.getElementById("confirmPassword");
+const togglePasswordCheckbox = document.getElementById("togglePasswordCheckbox");
+const toggleConfirmPasswordCheckbox = document.getElementById("toggleConfirmPasswordCheckbox");
 
+togglePasswordCheckbox.addEventListener("click", () => {
+    togglePassword(passwordInput);
+});
+
+toggleConfirmPasswordCheckbox.addEventListener("click", () => {
+    togglePassword(confirmPasswordInput);
+});
+
+function togglePassword(inputField) {
+    if (inputField.type === "password") {
+        inputField.type = "text";
+    } else {
+        inputField.type = "password";
+    }
+}
 

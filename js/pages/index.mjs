@@ -1,13 +1,13 @@
-async function displayBlogCards(data) {
+async function displayBlogCards(blogPost) {
     const displayContainer = document.getElementById('display-container');
     displayContainer.innerHTML = ''; 
-    data.forEach(item => {
+    blogPost.forEach(item => {
         const blogCard = generateBlogCard(item);
         displayContainer.appendChild(blogCard);
     });
 }
 
-function generateBlogCard(data) {
+export function generateBlogCard(blogPost) {
     const blogCardWrapper = document.createElement('div');
     blogCardWrapper.classList.add('blogcard-wrapper');
 
@@ -15,23 +15,25 @@ function generateBlogCard(data) {
     blogCardContainer.classList.add('blogcard-container');
 
     const blogCardImg = document.createElement('img');
-    blogCardImg.src = data.media.url;
-    blogCardImg.classList.add('blogCard-image');
+    blogCardImg.src = blogPost.media.url;
+    blogCardImg.classList.add('blogcard-image');
 
     blogCardImg.addEventListener('click', () => {
-        localStorage.setItem('dataId', data.id);
+        localStorage.setItem('blogPostId', blogPost.id);
     });    
         
     const blogCardLink = document.createElement('a');
-    blogCardLink.href= `./product/index.html?id=${data.id}/`;
+    blogCardLink.href= `./post/index.html?id=${blogPost.id}/`;
+
 
     const heading = document.createElement('h3');
-    heading.textContent = data.title;
+    heading.textContent = blogPost.title;
 
     const content = document.createElement('p');
-    content.textContent = data.body;
+    content.textContent = blogPost.body;
 
-    blogCardContainer.append(blogCardImg, heading, content);
+    blogCardLink.append(blogCardImg);
+    blogCardContainer.append(blogCardLink, heading, content);
     blogCardWrapper.appendChild(blogCardContainer);
     return blogCardWrapper;
 }
@@ -45,10 +47,9 @@ async function renderHomePage() {
                 // Authorization: Bearer ${acsesstoken},
             },
         });
-        const data = await responseData.json();
-        console.log('Data from API:', data);
-        await displayBlogCards(data.data); 
-        console.log('Logging data: ', data);
+        const blogPost = await responseData.json();
+        await displayBlogCards(blogPost.data); 
+        console.log('Logging data: ', blogPost);
 
     } catch (error) {
         console.error('Error rendering home page:', error);
