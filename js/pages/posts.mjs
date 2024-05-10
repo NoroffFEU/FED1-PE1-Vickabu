@@ -1,9 +1,41 @@
-async function displayBlogPost(blogPost) {
+import { API_USER_URL } from "../utils/constants.mjs";
+import { doFetch } from "../utils/doFetch.mjs";
+
+
+document.addEventListener('DOMContentLoaded', async function () {
+    const blogPostId = getBlogPostFromUrl();
+    await loadBlogPostDetails(blogPostId);
+});
+
+async function loadBlogPostDetails(blogPostId) {
+    try {
+        const blogPost = await getBlogPostId(blogPostId);
+        generateBlogCard(blogPost);
+    } catch (error) {
+        console.error("Error loading game details:", error);
+    }
+}
+
+function getBlogPostFromUrl() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('id');
+}
+
+async function getBlogPostId(blogPostId) {
+    const response = await doFetch(`${API_USER_URL}/${blogPostId}`);
+    return response.data;
+}
+
+
+
+
+async function generateBlogCard(blogPost) {
     const blogPostContainer = document.getElementById('blogpost-container');
     blogPostContainer.innerHTML = ''; 
 
     const blogCardImg = document.createElement('img');
     blogCardImg.src = blogPost.media.url;
+    blogCardImg.classList.add('blogcard-image')
 
     const heading = document.createElement('h3');
     heading.textContent = blogPost.title;
@@ -11,37 +43,6 @@ async function displayBlogPost(blogPost) {
     const content = document.createElement('p');
     content.textContent = blogPost.body;
 
-    blogPostContainer.append(blogCardImg, heading, content);
+    blogPostContainer.append(heading, blogCardImg, content);
 }
 
-async function renderPostPage() {
-    try {
-        const postId = localStorage.getItem('blogPostId');
-
-        const responseData = await fetch(`https://v2.api.noroff.dev/blog/posts/Noah/${postId}`, {
-            method: 'GET',
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-                // Authorization: Bearer ${acsesstoken},
-            },
-        });
-
-        const blogPost = await responseData.json();
-        await displayBlogPost(blogPost);
-
-        console.log('Logging post data:', blogPost);
-
-    } catch (error) {
-        console.error('Error rendering post page:', error);
-    }
-}
-
-async function main() {
-    try {
-        await renderPostPage();
-    } catch (error) {
-        console.error('Main error:', error);
-    }
-}
-
-main();

@@ -32,7 +32,7 @@ form {
 }
 
 label {
- display: block;
+  display: block;
  margin-bottom: 2%;
  font-size: 24px;
 }
@@ -52,8 +52,7 @@ input {
   padding-bottom: 5%;  
 }
 
-.togglePassword {
-  display: flex;
- 
+#password #confirmPassword {
+  max-width: 90%;
 }
 

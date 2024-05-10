@@ -1,3 +1,13 @@
+
+// karrusel
+
+import { doFetch } from '../utils/doFetch.mjs';
+import {API_USER_URL} from '../utils/constants.mjs'
+
+
+
+
+// blog list 
 async function displayBlogCards(blogPost) {
     const displayContainer = document.getElementById('display-container');
     displayContainer.innerHTML = ''; 
@@ -40,17 +50,9 @@ export function generateBlogCard(blogPost) {
 
 async function renderHomePage() {
     try {
-        const responseData = await fetch('https://v2.api.noroff.dev/blog/posts/Noah', {
-            method: 'GET',
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-                // Authorization: Bearer ${acsesstoken},
-            },
-        });
-        const blogPost = await responseData.json();
-        await displayBlogCards(blogPost.data); 
-        console.log('Logging data: ', blogPost);
-
+        const responseData = await doFetch(API_USER_URL);
+        await displayBlogCards(responseData.data); 
+        console.log('Logging data: ', responseData);
     } catch (error) {
         console.error('Error rendering home page:', error);
     }
