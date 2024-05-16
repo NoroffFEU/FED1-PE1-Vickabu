@@ -1,32 +1,62 @@
 
 @import url(/styles/css/nav-footer.css);
 
+body {
+    background-color: #E8DEDE;
+}
 
-#display-container {
+main {
     margin-left: 15%;
     margin-right: 15%;
+    text-align: center;
+}
+
+.filter-posts {
+    padding: 2%;
+}
+
+.filter-button {
+    border: none;
+    font-size: 24px;
+    font-weight: 700;
+    padding-left: 2%;
+    background: none;
+}
+
+.filter-button:hover {
+    text-decoration: underline;
+}
+
+
+
+#display-container {
     justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
 }
 
 .blogcard-wrapper {
-    height: auto;
     width: fit-content;
     background-color: aqua;
-   
+
 }
 
 .blogcard-container {
     display: block;
     text-align: left;
     height: auto;
+    height: 700px;
     background-color: blueviolet;
     height: auto;
     max-width: 480px;
+    position: relative;
 }
 
 .blogcard-image {
     max-width: 480px;
     justify-content: center;
+}
+
+.activ-filter {
+    text-decoration: underline;
 }

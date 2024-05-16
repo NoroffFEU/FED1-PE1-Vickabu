@@ -23,12 +23,12 @@ function validateAndSubmitForm() {
     const confirmPassword = document.getElementById("confirmPassword").value;
     let errorMessage = "";
 
-    const nameRegex = /^[a-zA-Z\- ]+$/;
+    const nameRegex = /^[\w]{1,20}$/;
     if (!nameRegex.test(name)) {
         errorMessage += "Username must contain only letters.\n";
     }
 
-    const emailRegex = /^\S+@\S+\.\S+$/;
+    const emailRegex = /^[\w\-.]+@(stud\.)?noroff\.no$/;
     if (!emailRegex.test(email)) {
         errorMessage += "Invalid email address.\n";
     }
@@ -47,6 +47,12 @@ function validateAndSubmitForm() {
         document.getElementById("errorMessage").textContent = "";
         registerUser(name, email, password);
         console.log("Validation passed, submitting form...");
+        document.getElementById("form-info").style.display = "none";
+        document.getElementById("registerForm").style.display = "none";
+        document.getElementById("successMessage").style.display = "block";
+        setTimeout(() => {
+            window.location.href = "../../account/login.html"; 
+        }, 3000);
     }
 }
 

@@ -1,13 +1,14 @@
 import { loginUser } from "../utils/loginUser.mjs";
 
-const loginForm = document.querySelector('#login-form');
-
-loginForm.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const [emailInput, passwordInput] = event.target.elements;
-    const email = emailInput.value;
-    const password = passwordInput.value;
-    await validateAndSubmitForm(email, password);
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('loginForm');
+    loginForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const [emailInput, passwordInput] = event.target.elements;
+        const email = emailInput.value;
+        const password = passwordInput.value;
+        await validateAndSubmitForm(email, password);
+    });
 });
 
 async function validateAndSubmitForm(email, password) {
@@ -41,6 +42,23 @@ async function validateAndSubmitForm(email, password) {
         }
     }
 }
+
+const passwordInput = document.getElementById("password");
+const togglePasswordCheckbox = document.getElementById("togglePasswordCheckbox");
+
+togglePasswordCheckbox.addEventListener("click", () => {
+    togglePassword(passwordInput);
+});
+
+
+function togglePassword(inputField) {
+    if (inputField.type === "password") {
+        inputField.type = "text";
+    } else {
+        inputField.type = "password";
+    }
+}
+
 
 async function checkUserExists(email) {
     try {

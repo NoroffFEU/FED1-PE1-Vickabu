@@ -1,5 +1,13 @@
+
+body {
+    background-color: #E8DEDE;
+}
+
+
 .blogcard-image {
-    max-width: 80%;
+    max-width: 1000px;
+    max-height: 680px;
+    text-align: center;
 }
 
 #blogpost-container {

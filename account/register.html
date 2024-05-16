@@ -40,10 +40,10 @@
 
           <div class="small-nav">
               <ul class="small-nav-li">
-                  <li><a href="#">Noah's Nest</a></li>
-                  <li><a href="#">Chronicles</a></li>
-                  <li><a href="#">Login</a></li>
-                  <li><a href="#">Register</a></li>
+                  <li><a href="../index.html">Noah's Nest</a></li>
+                  <li><a href="../about.html">Chronicles</a></li>
+                  <li><a href="login.html">Login</a></li>
+                  <li><a href="register.html">Register</a></li>
               </ul>
           </div>
       </nav>
@@ -66,11 +66,15 @@
                 <input type="checkbox" class="icon-container" id="toggleConfirmPasswordCheckbox">
                 <button type="submit">Register</button>
             </form>
-
+            <div id="successMessage">Registration successful! You are now being redirected to the login page.</div>
             <div id="errorMessage" style="color: red;"></div>
-            <p>By continuing, you agree to our <a href="#" id="termsLink">Terms of Service</a>and<a href="#" id="privacyLink">Privacy Policy</a>.</p>
-            <p>Already have a user? <a href="login.html" id="loginLink">Login here</a></p>
+            <div id="form-info">
+                <p>By continuing, you agree to our <a href="#" id="termsLink">Terms of Service</a>and<a href="#" id="privacyLink">Privacy Policy</a>.</p>
+                <p>Already have a user?<a href="login.html" id="loginLink">Login here</a></p>
+            </div>
         </div>
+
+
     </main>
 
     <footer>
