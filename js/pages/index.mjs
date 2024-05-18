@@ -15,13 +15,10 @@ const tipsBtn = document.getElementById('filter-tips')
 
 let chosenTag = '';
 
-
-
 viewAllBtn.addEventListener('click', () => {
     chosenTag = '';
     renderHomePage();
 });
-
 
 adventureBtn.addEventListener('click', () => {
     chosenTag = 'Adventure';
@@ -32,7 +29,6 @@ fashionBtn.addEventListener('click', () => {
     chosenTag = 'fashion';
     renderHomePage();
 });
-
 
 tipsBtn.addEventListener('click', () => {
     chosenTag = 'tips';

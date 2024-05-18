@@ -22,6 +22,7 @@ function getBlogPostFromUrl() {
 }
 
 async function getBlogPostId(blogPostId) {
+    // const id = window.location.search.slice(1)
     const response = await doFetch(`${API_USER_URL}/${blogPostId}`);
     return response.data;
 }

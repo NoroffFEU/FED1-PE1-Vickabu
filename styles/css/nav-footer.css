@@ -42,13 +42,13 @@ nav a {
     padding-top: 1%;
 }
 
-.admin-nav-link1 {
+#admin-nav-link1 {
     padding-right: 2%;
     border-right: 2px solid white;
     outline: none;
 }
 
-.admin-nav-link2{
+#admin-nav-link2{
     padding-left: 1%;
 }
 
