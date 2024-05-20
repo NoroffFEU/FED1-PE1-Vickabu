@@ -14,6 +14,6 @@ document.querySelectorAll(".small-nav-li").forEach(n => n. addEventListener ("cl
 }))
 
 
-configureUserAccess ()
+configureUserAccess ();
 
 

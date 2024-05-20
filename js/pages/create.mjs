@@ -8,7 +8,7 @@ form.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const formData = new FormData(form);
-    const tags = formData.getAll('tags');
+    const tags = formData.getAll('tags[]');
     const mediaUrl = formData.get('url');
     const mediaAlt = formData.get('imageAlt');
 
@@ -22,4 +22,6 @@ form.addEventListener('submit', async (event) => {
         }
     };
     doFetch('POST', API_USER_URL, postData)
+    alert('Post created successfully!');
+    window.location.href = `../../index.html`
 });

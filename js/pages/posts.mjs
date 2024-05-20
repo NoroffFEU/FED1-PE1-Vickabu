@@ -3,8 +3,8 @@ import { doFetch } from "../utils/doFetch.mjs";
 
 
 async function getBlogPostId() {
-    const id = window.location.search.slice(4)
-    const response = await doFetch('GET', API_USER_URL + id);
+    const id = new URLSearchParams(window.location.search).get('id');
+    const response = await doFetch('GET', `${API_USER_URL}/${id}`);
     generateBlogCard(response)
 }
 
@@ -34,6 +34,39 @@ function generateBlogCard(blogPost) {
     content.textContent = blogPost.body;
 
     blogPostContainer.append(heading, blogCardImg, authorName, date, content);
+
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (userInfo && userInfo.data.accessToken) {
+        const buttonContainer = document.createElement('div');
+        buttonContainer.classList.add('button-container');
+
+        const editButton = document.createElement('button');
+        editButton.textContent = 'Edit';
+        editButton.classList.add('edit-button');
+        editButton.addEventListener('click', () => {
+            window.location.href = `./edit.html?id=${blogPost.id}`;
+        });
+
+        // Opprett og legg til "Delete" knappen
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Delete';
+        deleteButton.classList.add('delete-button');
+        deleteButton.addEventListener('click', async () => {
+            const confirmDelete = confirm('Are you sure you want to delete this post?');
+            if (confirmDelete) {
+                await doFetch('DELETE', API_USER_URL + blogPost.id);
+                alert('Post deleted successfully');
+                window.location.href = './index.html';
+            }
+        });
+
+        buttonContainer.append(editButton, deleteButton);
+        blogPostContainer.appendChild(buttonContainer);
+    }
 }
+
+
+
+
 
 getBlogPostId();

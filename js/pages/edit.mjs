@@ -1,29 +1,50 @@
-import { onAuth } from "../utils/adminLinks.mjs";
-import { API_LOGIN_URL } from "../utils/constants.mjs";
+import { doFetch } from '../utils/doFetch.mjs';
+import { API_USER_URL } from '../utils/constants.mjs';
+
+async function getBlogPost() {
+    const id = new URLSearchParams(window.location.search).get('id');
+    const response = await doFetch('GET', `${API_USER_URL}/${id}`);
+    populateForm(response);
+}
+
+function populateForm(blogPost) {
+    document.getElementById('title').value = blogPost.title;
+    document.getElementById('createurl').value = blogPost.media.url;
+    document.getElementById('imageAlt').value = blogPost.media.alt;
+    document.getElementById('content').value = blogPost.body;
 
 
-const accessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTm9haCIsImVtYWlsIjoiTm9haEBzdHVkLm5vcm9mZi5ubyIsImlhdCI6MTcxNDY3OTcxNX0.WfTYnxSjNozWfH2ZLsEnYcRYjhI0C0x_ky46uzSnyTg'; 
+    const tags = blogPost.tags;
+    tags.forEach(tag => {
+        const checkbox = document.querySelector(`input[name="tags[]"][value="${tag}"]`);
+        if (checkbox) {
+            checkbox.checked = true;
+        }
+    });
+}
 
-        document.getElementById('fetchUserInfoBtn').addEventListener('click', async () => {
-            try {
-                const response = await fetch('https://v2.api.noroff.dev/blog/posts/Noah', { // Bytt ut med riktig API-endepunkt
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${accessToken}`,
-                        'Content-Type': 'application/json'
-                    }
-                });
+document.getElementById('blogPostForm').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    
+    const id = new URLSearchParams(window.location.search).get('id');
+    const formData = new FormData(event.target);
+    const postData = {
+        title: formData.get('title'),
+        media: {
+            url: formData.get('url'),
+            alt: formData.get('imageAlt'),
+        },
+        tags: formData.getAll('tags[]'),
+        body: formData.get('content'),
+    };
 
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
+    await doFetch('PUT', `${API_USER_URL}/${id}`, postData);
+    alert('Post updated successfully');
+    window.location.href = `./post.html?id=${id}`;
+});
 
-                const userInfo = await response.json();
-                console.log('User Info:', userInfo);
+document.getElementById('cancelButton').addEventListener('click', () => {
+    window.history.back();
+});
 
-                document.getElementById('userInfo').innerText = JSON.stringify(userInfo, null, 2);
-            } catch (error) {
-                console.error('Error fetching user info:', error);
-                document.getElementById('userInfo').innerText = 'Error fetching user info';
-            }
-        });
+getBlogPost();

@@ -6,7 +6,6 @@
     <title>Edit Post</title>
     <meta name="description" content="Edit you blog post">
     <link rel="icon" href="../assets/favicon-32x32.png">
-    <link rel="stylesheet" href="../styles/css/register.css">
     <link rel="stylesheet" href="../styles/css/nav-footer.css">
     <script src="../js/pages/edit.mjs" type="module"></script>
 </head>
@@ -48,9 +47,37 @@
   </header>
 
     <main>
-        <h1>Fetch User Info</h1>
-        <button id="fetchUserInfoBtn">Fetch User Info</button>
-        <div id="userInfo"></div>
+        <div class="edit-post-container">
+            <h1>Edit Blog Post</h1>
+            <div class="img-frame">
+                <div class="no-img-frame">
+                    <h2>Add image to your post</h2>
+                </div>
+            </div>
+            <form id="blogPostForm">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" placeholder="Enter title here" required>
+        
+                <label for="createurl">Image URL</label>
+                <input type="url" name="url" id="createurl" placeholder="Your Image url here">
+        
+                <label for="imageAlt">Image Alt Text</label>
+                <input type="text" id="imageAlt" name="imageAlt" placeholder="Alt text for image">
+        
+                <fieldset>
+                    <legend>Tags</legend>
+                    <label><input type="checkbox" name="tags[]" value="adventure">Adventure</label>
+                    <label><input type="checkbox" name="tags[]" value="fashion">Fashion</label>
+                    <label><input type="checkbox" name="tags[]" value="tips">Tips</label>
+                </fieldset>
+        
+                <label for="content">Content</label>
+                <textarea id="content" name="content" rows="10" cols="30" required></textarea>
+        
+                <button type="submit">Update Post</button>
+                <button type="button" id="cancelButton">Cancel</button>
+            </form>
+        </div>
     </main>
 
     <footer>
