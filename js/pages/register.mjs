@@ -1,22 +1,39 @@
-
-import { registerUser } from "../utils/registerUser.mjs";
+import { doFetch } from "../utils/doFetch.mjs";
+import { API_REGISTER_URL } from "../utils/constants.mjs";
 
 
 
 const registerForm = document.querySelector('#registerForm');
-
 registerForm.addEventListener('submit', (event) => {
     event.preventDefault();
-    const [nameInput, emailInput, passwordInput] = event.target.elements;
-    const name = nameInput.value;
-    const email = emailInput.value;
-    const password = passwordInput.value;
-    validateAndSubmitForm(name, email, password);
+    const formData = new FormData(registerForm);
+    const postData = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        password: formData.get('password'),
+    };
+
+    const errorMessage = validateForm();
+    if (errorMessage) {
+        document.getElementById("errorMessage").textContent = errorMessage;
+    } else {
+        document.getElementById("errorMessage").textContent = "";
+        doFetch('POST', API_REGISTER_URL, postData).then(response => {
+            console.log("Registration successful", response);
+            document.getElementById("form-info").style.display = "none";
+            document.getElementById("registerForm").style.display = "none";
+            document.getElementById("successMessage").style.display = "block";
+            setTimeout(() => {
+                window.location.href = "../../account/login.html"; 
+            }, 3000);
+        }).catch(error => {
+            console.error('Registration failed', error);
+            document.getElementById("errorMessage").textContent = "Registration failed.";
+        });
+    }
 });
 
-
-
-function validateAndSubmitForm() {
+function validateForm() {
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -41,20 +58,9 @@ function validateAndSubmitForm() {
         errorMessage += "Passwords do not match.\n";
     }
 
-    if (errorMessage !== "") {
-        document.getElementById("errorMessage").textContent = errorMessage;
-    } else {
-        document.getElementById("errorMessage").textContent = "";
-        registerUser(name, email, password);
-        console.log("Validation passed, submitting form...");
-        document.getElementById("form-info").style.display = "none";
-        document.getElementById("registerForm").style.display = "none";
-        document.getElementById("successMessage").style.display = "block";
-        setTimeout(() => {
-            window.location.href = "../../account/login.html"; 
-        }, 3000);
-    }
+    return errorMessage;
 }
+
 
 const passwordInput = document.getElementById("password");
 const confirmPasswordInput = document.getElementById("confirmPassword");
@@ -76,4 +82,3 @@ function togglePassword(inputField) {
         inputField.type = "password";
     }
 }
-

@@ -1,12 +1,11 @@
-
-// karrusel
-
 import { doFetch } from '../utils/doFetch.mjs';
 import {API_USER_URL} from '../utils/constants.mjs'
 
-
-
-
+async function renderHomePage() {
+    const blogPosts = await doFetch('GET', API_USER_URL)
+    console.log(blogPosts)
+    displayBlogCards(blogPosts)
+}
 
 const viewAllBtn = document.getElementById('filter-all')
 const adventureBtn = document.getElementById('filter-adventure')
@@ -21,7 +20,7 @@ viewAllBtn.addEventListener('click', () => {
 });
 
 adventureBtn.addEventListener('click', () => {
-    chosenTag = 'Adventure';
+    chosenTag = 'adventure';
     renderHomePage();
 });
 
@@ -41,6 +40,7 @@ async function displayBlogCards(blogPost) {
     displayContainer.innerHTML = ''; 
 
     const filteredPosts = chosenTag ? blogPost.filter(post => post.tags.includes(chosenTag)) : blogPost;
+    console.log('filteredPosts', filteredPosts)
     filteredPosts.forEach(item => {
         const blogCard = generateBlogCard(item);
         displayContainer.appendChild(blogCard);
@@ -94,24 +94,5 @@ export function generateBlogCard(blogPost) {
 }
 
 
-    // const content = document.createElement('p');
-    // content.textContent = blogPost.body;
-async function renderHomePage() {
-    try {
-        const responseData = await doFetch(API_USER_URL);
-        await displayBlogCards(responseData.data); 
-        console.log('Logging data: ', responseData);
-    } catch (error) {
-        console.error('Error rendering home page:', error);
-    }
-}
+renderHomePage();
 
-async function main() {
-    try {
-        await renderHomePage();
-    } catch (error) {
-        console.error('Main error:', error);
-    }
-}
-
-main();

@@ -2,35 +2,15 @@ import { API_USER_URL } from "../utils/constants.mjs";
 import { doFetch } from "../utils/doFetch.mjs";
 
 
-document.addEventListener('DOMContentLoaded', async function () {
-    const blogPostId = getBlogPostFromUrl();
-    await loadBlogPostDetails(blogPostId);
-});
-
-async function loadBlogPostDetails(blogPostId) {
-    try {
-        const blogPost = await getBlogPostId(blogPostId);
-        generateBlogCard(blogPost);
-    } catch (error) {
-        console.error("Error loading game details:", error);
-    }
-}
-
-function getBlogPostFromUrl() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('id');
-}
-
-async function getBlogPostId(blogPostId) {
-    // const id = window.location.search.slice(1)
-    const response = await doFetch(`${API_USER_URL}/${blogPostId}`);
-    return response.data;
+async function getBlogPostId() {
+    const id = window.location.search.slice(4)
+    const response = await doFetch('GET', API_USER_URL + id);
+    generateBlogCard(response)
 }
 
 
 
-
-async function generateBlogCard(blogPost) {
+function generateBlogCard(blogPost) {
     const blogPostContainer = document.getElementById('blogpost-container');
     blogPostContainer.innerHTML = ''; 
 
@@ -56,3 +36,4 @@ async function generateBlogCard(blogPost) {
     blogPostContainer.append(heading, blogCardImg, authorName, date, content);
 }
 
+getBlogPostId();

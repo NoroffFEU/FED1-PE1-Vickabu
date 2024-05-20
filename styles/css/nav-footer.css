@@ -145,13 +145,13 @@ footer a {
 }
 
 
-.admin-foot-link1 {
+#admin-foot-link1 {
     padding-right: 2%;
     border-right: 2px solid white;
     outline: none;
 }
 
-.admin-foot-link2 {
+#admin-foot-link2 {
     padding-left: 1%;
 }
 

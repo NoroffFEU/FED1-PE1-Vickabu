@@ -6,9 +6,10 @@
     <title>Register</title>
     <meta name="description" content="Register user">
     <link rel="icon" href="../assets/favicon-32x32.png">
-    <link rel="stylesheet" href="../styles/css/register.css">
+    <link rel="stylesheet" href="../styles/css/create-edit.css">
     <link rel="stylesheet" href="../styles/css/nav-footer.css">
-    <script src="../js/navigation.mjs" defer=""></script>
+    <script src="../js/utils/hamburger.mjs" type="module"></script>
+    <script src="../js/pages/create.mjs" type="module"></script>
 </head>
 
 
@@ -22,10 +23,8 @@
               <span class="bar"></span>
               <span class="bar"></span>
           </div>
-          <div class="admin-nav">
-            <a href="../account/register.html" id="admin-nav-link1">Register</a>
-            <a href="../account/login.html" id="admin-nav-link2">Login</a>
-          </div>
+          <div class="admin-nav"></div>
+
           <div class="nav-logo-container">
               <a href="../index.html"><img src="../assets/noah_1.png" alt="Pawlicious logo" class="nav-logo"></a>
           </div>
@@ -47,9 +46,38 @@
       </nav>
   </header>
 
-    <main>
-        
-    </main>
+  <main>
+  <div class="create-post-container">
+      <h1>Create New Blog Post</h1>
+      <div class="img-frame">
+          <div class="no-img-frame">
+              <h2>Add image to your post</h2>
+          </div>
+      </div>
+      <form id="blogPostForm">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" placeholder="Enter title here" required>
+
+          <label for="url">Image URL</label>
+          <input type="url" name="url" id="createurl" placeholder="Your Image url here">
+
+          <label for="imageAlt">Image Alt Text</label>
+          <input type="text" id="imageAlt" name="imageAlt" placeholder="Alt text for image">
+
+          <fieldset>
+              <legend>Tags</legend>
+              <label><input type="checkbox" name="tags[]" value="adventure">Adventure</label>
+              <label><input type="checkbox" name="tags[]" value="fashion">Fashion</label>
+              <label><input type="checkbox" name="tags[]" value="tips">Tips</label>
+          </fieldset>
+
+          <label for="content">Content</label>
+          <textarea id="content" name="content" rows="10" cols="30" required></textarea>
+          
+          <button type="submit">Create Post</button>
+      </form>
+  </div>
+</main>
 
     <footer>
         <div class="foot-nav-container">
@@ -69,10 +97,7 @@
                 </ul>
             </div>
             <hr class="header-hr">
-            <div class="admin-foot">
-                <a href="../account/login.html" class="admin-foot-link1">Login</a>
-                <a href="../account/register.html" class="admin-foot-link2">Register</a>
-            </div>
+            <div class="admin-foot"></div>
             <hr class="header-hr">
         </div>   
         <p class="foot-end">Noah - Rocking it since 2014</p>

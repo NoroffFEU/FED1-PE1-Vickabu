@@ -1,4 +1,4 @@
-import { onAuth } from "./onAuth.mjs";
+import { configureUserAccess } from "./adminLinks.mjs";
 
 const hamburger = document.querySelector(".hamburger");
 const navMenu = document.querySelector(".small-nav");
@@ -14,6 +14,6 @@ document.querySelectorAll(".small-nav-li").forEach(n => n. addEventListener ("cl
 }))
 
 
-onAuth ()
+configureUserAccess ()
 
 
