@@ -1,16 +1,19 @@
 import { doFetch } from '../utils/doFetch.mjs';
 import {API_USER_URL} from '../utils/constants.mjs'
+import { displayCarousel } from '../utils/carousel.mjs';
 
 async function renderHomePage() {
-    const blogPosts = await doFetch('GET', API_USER_URL)
-    console.log(blogPosts)
-    displayBlogCards(blogPosts)
+    const blogPosts = await doFetch('GET', API_USER_URL);
+    console.log(blogPosts);
+
+    displayCarousel(blogPosts);
+    displayBlogCards(blogPosts);
 }
 
-const viewAllBtn = document.getElementById('filter-all')
-const adventureBtn = document.getElementById('filter-adventure')
-const fashionBtn = document.getElementById('filter-fashion')
-const tipsBtn = document.getElementById('filter-tips')
+const viewAllBtn = document.getElementById('filter-all');
+const adventureBtn = document.getElementById('filter-adventure');
+const fashionBtn = document.getElementById('filter-fashion');
+const tipsBtn = document.getElementById('filter-tips');
 
 let chosenTag = '';
 
@@ -34,13 +37,12 @@ tipsBtn.addEventListener('click', () => {
     renderHomePage();
 });
 
-
-async function displayBlogCards(blogPost) {
+async function displayBlogCards(blogPosts) {
     const displayContainer = document.getElementById('display-container');
     displayContainer.innerHTML = ''; 
 
-    const filteredPosts = chosenTag ? blogPost.filter(post => post.tags.includes(chosenTag)) : blogPost;
-    console.log('filteredPosts', filteredPosts)
+    const filteredPosts = chosenTag ? blogPosts.filter(post => post.tags.includes(chosenTag)) : blogPosts;
+    console.log('filteredPosts', filteredPosts);
     filteredPosts.forEach(item => {
         const blogCard = generateBlogCard(item);
         displayContainer.appendChild(blogCard);
@@ -60,13 +62,13 @@ export function generateBlogCard(blogPost) {
 
     blogCardImg.addEventListener('click', () => {
         localStorage.setItem('blogPostId', blogPost.id);
-    });    
+    });
 
     const blogcardInfo = document.createElement('div');
     blogcardInfo.classList.add('blogcard-info');
-    
+
     const blogCardLink = document.createElement('a');
-    blogCardLink.href= `./post/index.html?id=${blogPost.id}/`;
+    blogCardLink.href = `./post/index.html?id=${blogPost.id}/`;
 
     const heading = document.createElement('h3');
     heading.textContent = blogPost.title;
@@ -86,13 +88,12 @@ export function generateBlogCard(blogPost) {
         window.location.href = `./post/index.html?id=${blogPost.id}/`;
     });
 
-    blogcardInfo.append(heading, authorName, date, readMoreBtn)
+    blogcardInfo.append(heading, authorName, date, readMoreBtn);
     blogCardLink.append(blogCardImg);
     blogCardContainer.append(blogCardLink, blogcardInfo);
     blogCardWrapper.appendChild(blogCardContainer);
     return blogCardWrapper;
 }
-
 
 renderHomePage();
 

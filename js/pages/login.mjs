@@ -4,7 +4,6 @@ import { doFetch } from "../utils/doFetch.mjs";
 
 
 
-
 const loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
@@ -18,7 +17,6 @@ loginForm.addEventListener('submit', async (event) => {
     
     if (response) {
         localStorage.setItem('userInfo', JSON.stringify({ data: { accessToken: response.accessToken } }));
-
         document.getElementById("login-form").style.display = "none";
         document.getElementById("successMessage").style.display = "block";
         setTimeout(() => {

@@ -8,6 +8,7 @@
     <link rel="icon" href="../assets/favicon-32x32.png">
     <link rel="stylesheet" href="../styles/css/nav-footer.css">
     <script src="../js/pages/edit.mjs" type="module"></script>
+    <script src="../js/utils/hamburger.mjs" type="module"></script>
 </head>
 
 
@@ -47,7 +48,7 @@
   </header>
 
     <main>
-        <div class="edit-post-container">
+        <div class="edit-post-container" id="edit-post-container">
             <h1>Edit Blog Post</h1>
             <div class="img-frame">
                 <div class="no-img-frame">
@@ -75,8 +76,12 @@
                 <textarea id="content" name="content" rows="10" cols="30" required></textarea>
         
                 <button type="submit">Update Post</button>
-                <button type="button" id="cancelButton">Cancel</button>
+                <button type="button" id="cancel-btn">Cancel</button>
+                <button type="button" id="delete-btn">Delete</button>
             </form>
+        </div>
+        <div id="No-acess-container">
+            <h1>Voff of!</h1>
         </div>
     </main>
 

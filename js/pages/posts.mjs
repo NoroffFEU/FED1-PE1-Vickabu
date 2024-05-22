@@ -47,16 +47,20 @@ function generateBlogCard(blogPost) {
             window.location.href = `./edit.html?id=${blogPost.id}`;
         });
 
-        // Opprett og legg til "Delete" knappen
         const deleteButton = document.createElement('button');
         deleteButton.textContent = 'Delete';
         deleteButton.classList.add('delete-button');
         deleteButton.addEventListener('click', async () => {
             const confirmDelete = confirm('Are you sure you want to delete this post?');
             if (confirmDelete) {
-                await doFetch('DELETE', API_USER_URL + blogPost.id);
-                alert('Post deleted successfully');
-                window.location.href = './index.html';
+                try {
+                    await doFetch('DELETE', `${API_USER_URL}/${blogPost.id}`);
+                    alert('Post deleted successfully');
+                    window.location.href = '../index.html';
+                } catch (error) {
+                    console.error('Error deleting post:', error);
+                    alert('Failed to delete post');
+                }
             }
         });
 

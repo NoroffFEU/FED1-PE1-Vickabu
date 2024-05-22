@@ -17,14 +17,18 @@ main {
 
 
 
-.img-frame{
-    display: block;
-    max-width: 900px;
-    max-height: 450px;
-    height: 100%;
-    width: 100%;
-    background-color: blue;
+.img-frame {
+  display: block;
+  max-width: 900px;
+  max-height: 450px;
+  height: 100%;
+  width: 100%;
+  background-color: blue; /* dette er kun for testformål, fjern denne linjen når du har fått bildet til å vises */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
 
 .checkbox {
     display: flex;
@@ -49,4 +53,5 @@ form {
     padding: 5px;
     background-color: #F0F0F0;
   }
+  
   

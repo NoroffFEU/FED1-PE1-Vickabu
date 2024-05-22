@@ -1,11 +1,9 @@
 import { handleLogout } from "./handleLogout.mjs";
 
+
 export const configureUserAccess = () => {
-    let isFrontPage = true;
-    if (window.location.pathname.includes('post') || window.location.pathname.includes('account')) {
-        isFrontPage = false;
-    }
-    const userInfo = localStorage.getItem('userInfo');
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    const isFrontPage = !(window.location.pathname.includes('post') || window.location.pathname.includes('account'));
     setupAdminLinks(userInfo, isFrontPage);
 };
 
