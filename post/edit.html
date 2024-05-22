@@ -7,6 +7,7 @@
     <meta name="description" content="Edit you blog post">
     <link rel="icon" href="../assets/favicon-32x32.png">
     <link rel="stylesheet" href="../styles/css/nav-footer.css">
+    <link rel="stylesheet" href="../styles/css/edit.css">
     <script src="../js/pages/edit.mjs" type="module"></script>
     <script src="../js/utils/hamburger.mjs" type="module"></script>
 </head>
@@ -47,43 +48,42 @@
       </nav>
   </header>
 
-    <main>
-        <div class="edit-post-container" id="edit-post-container">
-            <h1>Edit Blog Post</h1>
-            <div class="img-frame">
-                <div class="no-img-frame">
-                    <h2>Add image to your post</h2>
-                </div>
-            </div>
-            <form id="blogPostForm">
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title" placeholder="Enter title here" required>
-        
-                <label for="createurl">Image URL</label>
-                <input type="url" name="url" id="createurl" placeholder="Your Image url here">
-        
-                <label for="imageAlt">Image Alt Text</label>
-                <input type="text" id="imageAlt" name="imageAlt" placeholder="Alt text for image">
-        
-                <fieldset>
-                    <legend>Tags</legend>
-                    <label><input type="checkbox" name="tags[]" value="adventure">Adventure</label>
-                    <label><input type="checkbox" name="tags[]" value="fashion">Fashion</label>
-                    <label><input type="checkbox" name="tags[]" value="tips">Tips</label>
-                </fieldset>
-        
-                <label for="content">Content</label>
-                <textarea id="content" name="content" rows="10" cols="30" required></textarea>
-        
-                <button type="submit">Update Post</button>
-                <button type="button" id="cancel-btn">Cancel</button>
-                <button type="button" id="delete-btn">Delete</button>
-            </form>
+  <main>
+    <div class="edit-post-container" id="edit-post-container">
+        <h1>Edit Blog Post</h1>
+        <div class="img-frame">
+            <img id="imagePreview" class="no-img-frame" alt="Add image to your post">
         </div>
-        <div id="No-acess-container">
+        <form id="blogPostForm">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" placeholder="Enter title here" required>
+    
+            <label for="createurl">Image URL</label>
+            <input type="url" name="url" id="createurl" placeholder="Your Image URL here">
+    
+            <label for="imageAlt">Image Alt Text</label>
+            <input type="text" id="imageAlt" name="imageAlt" placeholder="Alt text for image">
+    
+            <fieldset>
+                <legend>Tags</legend>
+                <label><input type="checkbox" name="tags[]" value="adventure">Adventure</label>
+                <label><input type="checkbox" name="tags[]" value="fashion">Fashion</label>
+                <label><input type="checkbox" name="tags[]" value="tips">Tips</label>
+            </fieldset>
+    
+            <label for="content">Content</label>
+            <div id="editor" contenteditable="true" style="border: 1px solid #ccc; padding: 10px; min-height: 150px;"></div>
+            <input type="hidden" id="content" name="content">
+    
+            <button type="submit">Update Post</button>
+            <button type="button" id="cancel-btn">Cancel</button>
+            <button type="button" id="delete-btn">Delete</button>
+        </form>
+        </div>
+        <div id="No-access-container">
             <h1>Voff of!</h1>
         </div>
-    </main>
+ </main>
 
     <footer>
         <div class="foot-nav-container">

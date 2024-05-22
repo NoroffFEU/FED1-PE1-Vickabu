@@ -6,7 +6,7 @@
     <title>Register</title>
     <meta name="description" content="Register user">
     <link rel="icon" href="../assets/favicon-32x32.png">
-    <link rel="stylesheet" href="../styles/css/create-edit.css">
+    <link rel="stylesheet" href="../styles/css/create.css">
     <link rel="stylesheet" href="../styles/css/nav-footer.css">
     <script src="../js/utils/hamburger.mjs" type="module"></script>
     <script src="../js/pages/create.mjs" type="module"></script>
@@ -50,8 +50,8 @@
   <div class="create-post-container">
       <h1>Create New Blog Post</h1>
       <div class="img-frame">
-          <div class="no-img-frame">
-              <h2>Add image to your post</h2>
+        <div class="no-img-frame">
+            <h2>Add image to your post</h2>
           </div>
       </div>
       <form id="blogPostForm">
@@ -71,8 +71,7 @@
               <label><input type="checkbox" name="tags[]" value="tips">Tips</label>
           </fieldset>
 
-          <label for="content">Content</label>
-          <textarea id="content" name="content" rows="10" cols="30" required></textarea>
+          <div id="editor" contenteditable="true"></div>
           
           <button type="submit">Create Post</button>
       </form>

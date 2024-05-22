@@ -11,9 +11,10 @@ body {
 
 .carousel-container {
     position: relative;
-    width: 80%;
+    max-width: 1526px;
+    height: 680px;
+    width: 100%;
     margin: auto;
-    overflow: hidden;
     padding-bottom: 2%;
 }
 
@@ -34,6 +35,9 @@ body {
 
 .carousel-slide img {
     width: 100%;
+    max-height: 680px;
+    object-fit: cover;
+    object-position: center;
     display: block;
 }
 

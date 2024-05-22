@@ -31,9 +31,9 @@ function generateBlogCard(blogPost) {
     heading.textContent = blogPost.title;
 
     const content = document.createElement('p');
-    content.textContent = blogPost.body;
+    content.innerHTML = blogPost.body;
 
-    blogPostContainer.append(heading, blogCardImg, authorName, date, content);
+    blogPostContainer.append(heading, authorName, date, blogCardImg, content);
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     if (userInfo && userInfo.data.accessToken) {

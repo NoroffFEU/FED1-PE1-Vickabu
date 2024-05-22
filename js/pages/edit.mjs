@@ -17,8 +17,11 @@ function populateForm(blogPost) {
     document.getElementById('title').value = blogPost.title;
     document.getElementById('createurl').value = blogPost.media.url;
     document.getElementById('imageAlt').value = blogPost.media.alt;
-    document.getElementById('content').value = blogPost.body;
+    document.getElementById('editor').innerHTML = blogPost.body;
 
+  
+    const imagePreview = document.getElementById('imagePreview');
+    imagePreview.src = blogPost.media.url;
 
     const tags = blogPost.tags;
     tags.forEach(tag => {
@@ -29,11 +32,23 @@ function populateForm(blogPost) {
     });
 }
 
+document.getElementById('createurl').addEventListener('input', function() {
+    const imageUrl = this.value.trim();
+    const imagePreview = document.getElementById('imagePreview');
+    if (imageUrl) {
+        imagePreview.src = imageUrl;
+        imagePreview.style.display = 'block';
+    } else {
+        imagePreview.style.display = 'none';
+    }
+});
+
 document.getElementById('blogPostForm').addEventListener('submit', async (event) => {
     event.preventDefault();
     
     const id = new URLSearchParams(window.location.search).get('id');
     const formData = new FormData(event.target);
+    const editorContent = document.getElementById('editor').innerHTML;
     const postData = {
         title: formData.get('title'),
         media: {
@@ -41,7 +56,7 @@ document.getElementById('blogPostForm').addEventListener('submit', async (event)
             alt: formData.get('imageAlt'),
         },
         tags: formData.getAll('tags[]'),
-        body: formData.get('content'),
+        body: editorContent,
     };
 
     await doFetch('PUT', `${API_USER_URL}/${id}`, postData);
@@ -68,6 +83,5 @@ document.getElementById('delete-btn').addEventListener('click', async () => {
         }
     }
 });
-
 
 getBlogPost();

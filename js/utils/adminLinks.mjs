@@ -1,11 +1,15 @@
 import { handleLogout } from "./handleLogout.mjs";
 
 
+
+
 export const configureUserAccess = () => {
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     const isFrontPage = !(window.location.pathname.includes('post') || window.location.pathname.includes('account'));
     setupAdminLinks(userInfo, isFrontPage);
 };
+
+
 
 const setupAdminLinks = (userInfo, isFrontPage) => {
     const adminNav = document.querySelector('.admin-nav');
