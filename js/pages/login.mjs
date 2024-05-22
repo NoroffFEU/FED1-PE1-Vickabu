@@ -20,7 +20,7 @@ loginForm.addEventListener('submit', async (event) => {
         document.getElementById("login-form").style.display = "none";
         document.getElementById("successMessage").style.display = "block";
         setTimeout(() => {
-            window.location.href = "../../index.html"; 
+            window.location.href = "../index.html"; 
         }, 3000);
     } else {
         console.error('Login failed');
