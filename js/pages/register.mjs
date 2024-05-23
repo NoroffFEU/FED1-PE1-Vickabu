@@ -24,7 +24,7 @@ registerForm.addEventListener('submit', (event) => {
             document.getElementById("registerForm").style.display = "none";
             document.getElementById("successMessage").style.display = "block";
             setTimeout(() => {
-                window.location.href = "../../account/login.html"; 
+                window.location.href = "../account/login.html"; 
             }, 3000);
         }).catch(error => {
             console.error('Registration failed', error);
