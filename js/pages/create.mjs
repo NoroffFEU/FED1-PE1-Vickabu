@@ -34,7 +34,7 @@ import { doFetch } from "../utils/doFetch.mjs";
             try {
                 await doFetch('POST', API_USER_URL, postData);
                 alert('Post created successfully!');
-                window.location.href = `../../index.html`;
+                window.location.href = `../index.html`;
             } catch (error) {
                 console.error('Error creating post:', error);
                 alert('Failed to create post. Please try again.');
