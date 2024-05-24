@@ -47,7 +47,7 @@ function validateForm() {
 
     const emailRegex = /^[\w\-.]+@(stud\.)?noroff\.no$/;
     if (!emailRegex.test(email)) {
-        errorMessage += "Invalid email address.\n";
+        errorMessage += "Invalid email address. Email must contain @stud.noroff.no\n";
     }
 
     if (password.length < 8) {

@@ -4,7 +4,7 @@ import { doFetch } from "../utils/doFetch.mjs";
 
 
 
-const loginForm = document.querySelector('#login-form');
+const loginForm = document.querySelector('#loginForm');
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const formData = new FormData(loginForm);
@@ -13,17 +13,23 @@ loginForm.addEventListener('submit', async (event) => {
         password: formData.get('password'),
     };
 
-    const response = await doFetch('POST', API_LOGIN_URL, postData);
-    
-    if (response) {
-        localStorage.setItem('userInfo', JSON.stringify({ data: { accessToken: response.accessToken } }));
-        document.getElementById("login-form").style.display = "none";
-        document.getElementById("successMessage").style.display = "block";
-        setTimeout(() => {
-            window.location.href = "../index.html"; 
-        }, 3000);
-    } else {
-        console.error('Login failed');
+    try {
+        const response = await doFetch('POST', API_LOGIN_URL, postData);
+        
+        if (response && response.accessToken) {
+            localStorage.setItem('userInfo', JSON.stringify({ data: { accessToken: response.accessToken } }));
+            document.getElementById("loginForm").style.display = "none";
+            document.getElementById("form-info").style.display = "none";
+            document.getElementById("successMessage").style.display = "block";
+            setTimeout(() => {
+                window.location.href = "../index.html"; 
+            }, 3000);
+        } else {
+            throw new Error('Invalid login credentials');
+        }
+    } catch (error) {
+        console.error('Login failed:', error);
+        document.getElementById("errorMessage").textContent = error.message;
     }
 });
 

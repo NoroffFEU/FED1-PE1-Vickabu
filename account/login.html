@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <meta name="description" content="Login in to yor accouunt and start posting">
+    <meta name="description" content="Login in to your Pawlicious accouunt and start pawsting">
     <link rel="icon" href="../assets/favicon-32x32.png">
-    <link rel="stylesheet" href="../styles/css/register.css">
+    <link rel="stylesheet" href="../styles/css/login-register.css">
     <script src="../js/utils/hamburger.mjs" type="module"></script>
     <script src="../js/pages/login.mjs" type="module"></script>
 </head>
@@ -44,27 +44,31 @@
       </nav>
   </header>
 
-    <main>
-        <div class="form-container">
-            <h2>Login</h2>
-            <hr>
-
-            <div id="errorMessage" style="color: red;"></div>
-
-            <form id="login-form">
-                <label for="email">Email:</label><br>
-                <input type="email" id="email" name="email" placeholder="Enter email" required><br>
-                <label for="password">Password:</label><br>
-                <input type="password" id="password" name="password" placeholder="Enter password" required>
-                <input type="checkbox" class="icon-container" id="togglePasswordCheckbox">
-                <button type="submit">Login</button>
-            </form>
-            <div id="successMessage">Login successful! You are now being redirected to the Home Page.</div>
-
-            <div id="errorMessage" style="color: red;"></div>
-            <p>Dont have an account? <a href="register.html" id="registerLink">Register here</a></p>
+  <main>
+    <div class="form-container">
+        <h1>Login</h1>
+        <hr>
+        <div id="errorMessage" style="color: red;"></div>
+        <form id="loginForm">
+            <label for="email" class="formlabel">Email:</label>
+            <input type="email" class="forminput" id="email" name="email" placeholder="Enter email" required>
+            <label for="password" class="formlabel">Password:</label>
+            <input type="password" class="forminput" id="password" name="password" placeholder="Enter password" required>
+            <div class="password-options">
+                <input type="checkbox" id="togglePasswordCheckbox" class="icon-container">
+                <label for="togglePasswordCheckbox">Show Password</label>
+            </div>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+        <div id="form-info">
+            <p>Don't have an account? <a href="register.html" id="registerLink">Register here</a></p>
         </div>
-    </main>
+        <div id="successMessage">
+            <p>Login successful!</p>
+            <p>You are now being redirected to the Home Page</p>
+        </div>
+    </div>
+</main>
 
     <footer>
         <div class="foot-nav-container">

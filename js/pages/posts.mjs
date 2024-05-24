@@ -18,14 +18,18 @@ function generateBlogCard(blogPost) {
     blogCardImg.src = blogPost.media.url;
     blogCardImg.classList.add('blogcard-image')
 
-    const authorName = document.createElement('p');
-    authorName.textContent = `Author: ${blogPost.author.name}`;
+    // const authorName = document.createElement('p');
+    // authorName.textContent = `Author: ${blogPost.author.name}`;
 
     const createdDate = new Date(blogPost.created);
     const options = { day: 'numeric', month: 'short', year: 'numeric' };
     const formattedDate = createdDate.toLocaleDateString('en-GB', options);
     const date = document.createElement('p');
-    date.textContent = `Published: ${formattedDate}`;
+    date.textContent = `By ${blogPost.author.name} | Posted on ${formattedDate}`;
+
+    const avatarImg = document.createElement('img');
+    avatarImg.src = blogPost.author.avatar.url;
+    avatarImg.classList.add('avatar-image');
 
     const heading = document.createElement('h3');
     heading.textContent = blogPost.title;
@@ -33,7 +37,8 @@ function generateBlogCard(blogPost) {
     const content = document.createElement('p');
     content.innerHTML = blogPost.body;
 
-    blogPostContainer.append(heading, authorName, date, blogCardImg, content);
+
+    blogPostContainer.append(heading, avatarImg, date, blogCardImg, content);
 
     const userInfo = JSON.parse(localStorage.getItem('userInfo'));
     if (userInfo && userInfo.data.accessToken) {

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-    <meta name="description" content="Register user">
+    <meta name="description" content="Register new user to become a member of the Pawlicious crew">
     <link rel="icon" href="../assets/favicon-32x32.png">
-    <link rel="stylesheet" href="../styles/css/register.css">
+    <link rel="stylesheet" href="../styles/css/login-register.css">
     <script src="../js/utils/hamburger.mjs" type="module"></script>
     <script src="../js/pages/register.mjs" type="module"></script>
     
@@ -50,23 +50,32 @@
             <h1>Register</h1>
             <hr>
             <form id="registerForm">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" placeholder="Enter name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Enter email" required>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" placeholder="Enter password (min 8 characters)" required>
-                <input type="checkbox" class="icon-container" id="togglePasswordCheckbox">
-                <label for="confirmPassword">Confirm Password:</label>
-                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
-                <input type="checkbox" class="icon-container" id="toggleConfirmPasswordCheckbox">
-                <button type="submit">Register</button>
+                <label for="name" class="formlabel">Name:</label>
+                <input type="text" class="forminput" id="name" name="name" placeholder="Enter name" required>
+                <label for="email" class="formlabel">Email:</label>
+                <input type="email" class="forminput" id="email" name="email" placeholder="Enter email" required>
+                <label for="password" class="formlabel">Password:</label>
+                <input type="password" class="forminput" id="password" name="password" placeholder="Enter password (min 8 characters)" required>
+                <div class="password-options">
+                    <input type="checkbox" id="togglePasswordCheckbox" class="icon-container">
+                    <label for="togglePasswordCheckbox">Show Password</label>
+                </div>
+                <label for="confirmPassword" class="formlabel">Confirm Password:</label>
+                <input type="password" class="forminput" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+                <div class="password-options">
+                    <input type="checkbox" id="toggleConfirmPasswordCheckbox" class="icon-container">
+                    <label for="toggleConfirmPasswordCheckbox">Show Password</label>
+                </div>
+                <button type="submit" class="submit-btn">Register</button>
             </form>
-            <div id="successMessage">Registration successful! You are now being redirected to the login page.</div>
             <div id="errorMessage" style="color: red;"></div>
             <div id="form-info">
+                <p>Already have a user?<a href="login.html" id="loginlink">Login here</a></p>
                 <p>By continuing, you agree to our <a href="#" id="termsLink">Terms of Service</a>and<a href="#" id="privacyLink">Privacy Policy</a>.</p>
-                <p>Already have a user?<a href="login.html" id="loginLink">Login here</a></p>
+            </div>
+            <div id="successMessage">
+                <p>Registration successful!</p>
+                <p>You are now being redirected to the login page.</p>
             </div>
         </div>
 

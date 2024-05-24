@@ -6,6 +6,7 @@ import { doFetch } from "../utils/doFetch.mjs";
             if (!checkUserLoggedIn()) {
                 alert('Only Pawlicious`s crew can access this page, please log in');
                 window.location.href = "../account/login.html";
+                return;
             }
         }
         checkIfLoggedIn();
