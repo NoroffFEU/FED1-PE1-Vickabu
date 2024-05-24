@@ -58,6 +58,7 @@ export function generateBlogCard(blogPost) {
 
     const blogCardImg = document.createElement('img');
     blogCardImg.src = blogPost.media.url;
+    blogCardImg.alt = blogPost.media.alt;
     blogCardImg.classList.add('blogcard-image');
 
     blogCardImg.addEventListener('click', () => {
