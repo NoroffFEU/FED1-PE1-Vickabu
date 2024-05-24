@@ -1,5 +1,6 @@
 
 @import url(nav-footer.css);
+@import url(../carousel.css);
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 
@@ -9,89 +10,6 @@ body {
     background-color: #E8DEDE;
 }
 
-.carousel-container {
-    position: relative;
-    max-width: 1526px;
-    height: 680px;
-    width: 100%;
-    margin: auto;
-    padding-bottom: 2%;
-}
-
-.carousel {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.carousel-slide {
-    min-width: 100%;
-    position: relative;
-    display: none; 
-}
-
-.carousel-slide.active {
-    display: block; 
-}
-
-.carousel-slide img {
-    width: 100%;
-    max-height: 680px;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1;
-}
-
-.left-btn {
-    left: 10px;
-}
-
-.right-btn {
-    right: 10px;
-}
-
-.info-frame {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    max-width: 300px;
-    background: rgba(53, 40, 40, 0.7);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-
-}
-
-.info-frame h3 {
-    margin: 0;
-    text-align: center;
-}
-
-.info-frame button {
-    margin-top: 10px;
-    padding: 5px 15px;
-    background: #9F576B;
-    color: white;
-    border: solid black 1px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 20px;
-    font-weight: 500;
-}
 
 
 main {
@@ -140,6 +58,8 @@ main {
     width: 100%;
     text-align: left;
     position: relative; 
+    border-radius: 5px;
+    
 }
 
 .blogcard-info {
@@ -147,21 +67,37 @@ main {
     max-width: 480px;
     width: 100%;
     background: rgba(53, 40, 40, 0.7);
-    display: flex;
+    display: block;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
     text-align: center;
     bottom: 0; 
     color: white;
+    border-radius: 0 0  5px 5px;
 
 }
+
+
+p {
+    display: none;
+}
+
+
+
+.blogcard-container:hover p {
+    display: block;
+}
+
+.blogcard-img:hover {
+    box-shadow: 0 40px 40px rgba(100, 89, 89, 0,8);
+}
+
 
 .blogcard-image {
     width: 100%;
     height: 100%; /* Endret her */
     object-fit: cover;
     object-position: center;
+    border-radius: 5px;
 }
 
 

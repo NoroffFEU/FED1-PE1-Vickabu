@@ -19,6 +19,7 @@ const setupAdminLinks = (userInfo, isFrontPage) => {
     const adminFoot = document.querySelector('.admin-foot');
     adminFoot.innerHTML = '';
 
+    /*Prefix deliverd by Laura*/
     const prefix = isFrontPage ? "" : "../";
 
     if (userInfo) {

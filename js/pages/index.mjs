@@ -73,24 +73,16 @@ export function generateBlogCard(blogPost) {
     const heading = document.createElement('h3');
     heading.textContent = blogPost.title;
 
-    const authorName = document.createElement('p');
-    authorName.textContent = `Author: ${blogPost.author.name}`;
-
     const createdDate = new Date(blogPost.created);
     const options = { day: 'numeric', month: 'short', year: 'numeric' };
     const formattedDate = createdDate.toLocaleDateString('en-GB', options);
     const date = document.createElement('p');
-    date.textContent = `Published: ${formattedDate}`;
+    date.textContent = `Posted on ${formattedDate} by ${blogPost.author.name}`;
 
-    const readMoreBtn = document.createElement('button');
-    readMoreBtn.textContent = 'Read More';
-    readMoreBtn.addEventListener('click', () => {
-        window.location.href = `./post/index.html?id=${blogPost.id}/`;
-    });
 
-    blogcardInfo.append(heading, authorName, date, readMoreBtn);
-    blogCardLink.append(blogCardImg);
-    blogCardContainer.append(blogCardLink, blogcardInfo);
+    blogcardInfo.append(heading, date);
+    blogCardLink.append(blogCardImg, blogcardInfo);
+    blogCardContainer.append(blogCardLink);
     blogCardWrapper.appendChild(blogCardContainer);
     return blogCardWrapper;
 }
