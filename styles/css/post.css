@@ -22,10 +22,72 @@ body {
 }
 
 
+.publish-info {
+    display: flex;
+    width: 100%;  
+    margin-bottom: 20px;
+}
 
-p {
-    display: block;
+.avatar-image {
+    max-height: 55px;
+    padding-right: 10px;
+}
+
+.posted-by-date {
     width: 100%;
     font-size: 24px;
     max-width: 1100px;
+}
+
+.blogcard-image {
+    max-width: 100%;
+}
+
+/*Buttons*/
+
+button {
+    margin-top: 10px;
+    padding: 5px 15px;
+    color: white;
+    border: solid black 1px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.admin-btns {
+    width: fit-content;
+    text-align: right;  
+    margin-left: auto;
+    align-items: bottom;    
+
+}
+
+.edit-button, #next-button  {
+    background: #9F576B;
+}
+
+
+.edit-button {
+    margin: 0;
+}
+
+.delete-button {
+    background: black;
+    display: block;
+    text-align: right;
+}
+
+#prev-button {
+    background-color: #52303A;
+}
+
+
+.navigation-btn {
+    justify-content: space-between;
+    display: flex;
+    max-width: 1526px;
+    margin-left: auto;
+    margin-right: auto;  
 }

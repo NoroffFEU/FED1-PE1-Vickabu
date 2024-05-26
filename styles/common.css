@@ -18,6 +18,11 @@ h3 {
     font-size: 32px;
 }
 
+.main-hr {
+  max-width: 1526px;
+}
+
+
 
 @media (max-width: 1200px) {
 

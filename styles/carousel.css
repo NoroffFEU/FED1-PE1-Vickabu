@@ -55,19 +55,18 @@
     right: 0;
     top: 0;
     bottom: 0;
-    max-width: 300px;
+    max-width: 460px;
     background: rgba(53, 40, 40, 0.7);
     padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-
 }
 
 .info-frame h3 {
     margin: 0;
-    text-align: center;
+    text-align: left;
 }
 
 .info-frame button {
@@ -80,4 +79,60 @@
     cursor: pointer;
     font-size: 20px;
     font-weight: 500;
+}
+
+
+@media (max-width: 1200px) { }
+
+
+@media (max-width: 1008px) {
+    
+}
+
+
+@media (max-width: 640px) {
+
+    .carousel-container {
+        height: fit-content;
+        padding-bottom: 2%;
+    }
+    
+
+    
+    .carousel-btn {
+        position: absolute;
+        padding: 5px;
+    }
+    
+    .left-btn {
+        left: 5px;
+    }
+    
+    .right-btn {
+        right: 5px;
+    }
+    
+    .info-frame {
+        width: 100%;
+        max-width: inherit;
+        max-height: fill;
+        align-items: center;
+        top: initial;
+        right: initial;
+
+    }
+    
+    .info-frame h3 {
+        margin: 0;
+        text-align: center;
+    }
+    
+    .info-frame button {
+        margin-top: 10px;
+        padding: 2px 5px;
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    
 }
