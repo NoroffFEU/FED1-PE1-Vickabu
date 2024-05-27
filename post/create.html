@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <meta name="description" content="Register user">
+    <title>Create</title>
+    <meta name="description" content="Create a new pawtastisk blog post">
     <link rel="icon" href="../assets/favicon-32x32.png">
-    <link rel="stylesheet" href="../styles/css/create.css">
+    <link rel="stylesheet" href="../styles/css/edit-create.css">
     <script src="../js/utils/hamburger.mjs" type="module"></script>
     <script src="../js/pages/create.mjs" type="module"></script>
 </head>
@@ -48,7 +48,7 @@
   </header>
 
   <main>
-  <div class="create-post-container">
+    <div class="post-container">
       <h1>Create New Blog Post</h1>
       <div class="img-frame">
         <div class="no-img-frame">
@@ -75,6 +75,7 @@
           <div id="editor" contenteditable="true"></div>
           
           <button type="submit">Create Post</button>
+          <button type="button" id="cancel-btn">Cancel</button>
       </form>
   </div>
 </main>

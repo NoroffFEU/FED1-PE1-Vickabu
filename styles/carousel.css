@@ -34,20 +34,22 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.8);
-    color: white;
-    border: none;
-    padding: 10px;
+    background-color: rgba(53, 40, 40, 0.85);
+    color: #E8DEDE;
+    padding: 20px 15px 20px 15px;
+    border-radius: 2.5px;
     cursor: pointer;
     z-index: 1;
+    
 }
 
+
 .left-btn {
-    left: 10px;
+    left: 0;
 }
 
 .right-btn {
-    right: 10px;
+    right: 0;
 }
 
 .info-frame {
@@ -85,13 +87,16 @@
 
 @media (max-width: 1200px) {
 
+    .carousel-btn {
+        padding: 15px 10px 15px 10px;        
+    }
 
     .info-frame {
         max-width: 300px;
     }
 
     .info-frame button {
-        font-size: 25px;
+        font-size: 20px;
     }
  }
 
@@ -114,10 +119,10 @@
 
 @media (max-width: 640px) {
 
-
     .carousel-btn {
-        padding: 5px;
+        padding: 10px 5px 10px 5px;        
     }
+  
     
     .left-btn {
         left: 5px;
