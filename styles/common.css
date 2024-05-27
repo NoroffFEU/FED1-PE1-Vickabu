@@ -24,7 +24,9 @@ h3 {
 
 
 .main-hr {
-  max-width: 1526px;
+  max-width: 1524px;
+  width: 95%;
+  margin: auto;
 }
 
 
@@ -44,6 +46,9 @@ h3 {
         font-size: 26px;
     }
     
+    .main-hr {
+      max-width: 80%;
+    }
 
 
 }
