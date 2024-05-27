@@ -2,9 +2,7 @@
 
 
 
-button {
-    font-family: "Roboto Serif", sans-serif;
-}
+
 
 
 /*navbar*/
@@ -15,12 +13,13 @@ header {
 }
 
 nav {
-    max-width: 1526px;
-    width: 100%;
+
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
     color: white;
     padding-bottom: 1%;
+    position: relative;
 }
 
 .nav-logo-container {
@@ -41,7 +40,7 @@ nav a {
 .admin-nav {
     text-align: right;
     font-size: 20px;
-    padding-top: 1%;
+    padding-top: 20px;
 }
 
 #admin-nav-link1 {
@@ -71,12 +70,11 @@ nav a {
     padding-left: 5%;
 }
 
-.header-hr {
-    color: white;
-}
 
 .small-nav {
     display: none;
+    z-index: 1;
+    position: static;
 }
 
 .hamburger {
@@ -95,6 +93,8 @@ nav a {
 
 
 
+
+
 /*footer*/
 
 footer {
@@ -109,8 +109,9 @@ footer a {
 }
 
 .foot-nav-container {
-    margin-left: 15%;
-    margin-right: 15%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 35px;
     padding-bottom: 1%;
 }
@@ -154,7 +155,7 @@ footer a {
 }
 
 #admin-foot-link2 {
-    padding-left: 1%;
+    padding-left: 2%;
 }
 
 
@@ -172,7 +173,7 @@ footer a {
 @media (max-width: 1200px) {
 
     .main-nav {
-        font-size: 20px;
+        font-size: 25px;
     }
 
     .foot-nav-container {
@@ -191,9 +192,8 @@ footer a {
 
 @media (max-width: 1008px) {
 
-  
     nav {
-        margin: 0;
+        width: 100%;
     }
 
     .main-nav, .admin-nav{
@@ -205,40 +205,49 @@ footer a {
     }
 
 
-
     .small-nav.activ {
         display: flex;
-        position: fixed;
+        position: absolute; 
         flex-direction: column;
         text-align: center;
         align-items: center;
         background-color: #645959;
         color: white;
         width: 100%;
+        z-index: 2; 
+        padding: 20px 0  20px;
     }
 
     .small-nav-li {
         list-style: none;
-        font-size: 20px;
-        width: 100%;
+        font-size: 24px;
         padding: 0;
+        margin-bottom: 0;
+        margin-top: 0;
     }
 
+    .small-nav-li a.activ {
+        background-color: #786c6c;
+        padding: 0 50px 0 50px;
+        
+    }
 
+    .small-nav-li li {
+        padding: 10px 0 10px;
+    }
 
     .hamburger {
         display: block;
-        right: 5%;
-        padding-top: 5%;
-        position: fixed;
+        position: absolute; 
+        right: 40px;
+        padding-top: 40px;
+        z-index: 1; 
     }
-
 
     .bar {
         text-align: right;
         align-items: right;
     }
-
 
     .nav-logo {
         max-height: 100px;
@@ -267,7 +276,6 @@ footer a {
         padding-bottom: 4%;
     }
     
-
     .foot-nav {
         display: flex;
         flex-direction: column;
@@ -285,27 +293,25 @@ footer a {
         padding-top: 2%;
     }    
 
-    .admin-foot {
-        max-width: fit-content;
-        margin-left: auto;
-        margin-right: auto;
-    }
+
     
     .admin-foot a {
         display: block;
-        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        padding-bottom: 2%;
     }
     
-    .admin-foot-link1 {
+    #admin-foot-link1 {
         padding-right: 0;
+        width: fit-content;
         padding-bottom: 2%;
-        outline: none;
         border-right: none;
         border-bottom: 2px solid white;
         
     }
     
-    .admin-foot-link2 {
+    #admin-foot-link2 {
         padding-left: 0;
         padding-top: 2%;
     }
@@ -325,6 +331,9 @@ footer a {
 
 @media (max-width: 640px) {
 
+    .nav-logo {
+        max-height: 70px;
+    }
 
     .foot-logo {
         max-width: 90px;
@@ -338,3 +347,20 @@ footer a {
         font-size: 10px;
     }
 }
+
+@media (max-width: 360px) {
+
+    .nav-logo {
+        max-height: 70px;
+    }
+
+    .hamburger {
+        padding-top: 35px;
+    }
+
+    .foot-logo {
+        max-width: 80px;
+    }
+
+}
+
