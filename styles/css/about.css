@@ -23,15 +23,32 @@ h1 {
     padding-bottom: 20px;
 }
 
-main {
-    justify-content: center;
-    max-width: 1526px;
-    width: 100%;
+.about-section {
+    max-width: 1300px;
     margin: auto;
+    align-items: center;
 }
-
 
 
 p {
     font-size: 24px;
+}
+
+.back-link {
+    font-size: 20px;
+    text-align: right;
+    text-decoration: none;
+}
+
+.back-link a{
+    color: black;
+}
+
+
+@media (max-width: 1440px){
+
+    .about-section {
+        max-width: 90%;
+    }
+    
 }

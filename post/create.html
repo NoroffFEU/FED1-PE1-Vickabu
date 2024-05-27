@@ -56,17 +56,17 @@
           </div>
       </div>
       <form id="blogPostForm">
-          <label for="title">Title</label>
+          <label for="title">Title:</label>
           <input type="text" id="title" name="title" placeholder="Enter title here" required>
 
-          <label for="url">Image URL</label>
+          <label for="url">Image URL:</label>
           <input type="url" name="url" id="createurl" placeholder="Your Image url here">
 
-          <label for="imageAlt">Image Alt Text</label>
+          <label for="imageAlt">Image Alt Text:</label>
           <input type="text" id="imageAlt" name="imageAlt" placeholder="Alt text for image">
 
           <fieldset>
-              <legend>Tags</legend>
+              <legend>Tags:</legend>
               <label><input type="checkbox" name="tags[]" value="adventure">Adventure</label>
               <label><input type="checkbox" name="tags[]" value="fashion">Fashion</label>
               <label><input type="checkbox" name="tags[]" value="tips">Tips</label>
@@ -74,7 +74,7 @@
 
           <div id="editor" contenteditable="true"></div>
           
-          <button type="submit">Create Post</button>
+          <button type="submit" class="submit-btn">Create Post</button>
           <button type="button" id="cancel-btn">Cancel</button>
       </form>
   </div>

@@ -12,26 +12,28 @@ main {
 }
 
 .form-container {
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
   max-width: 615px;
   background-color: white;
   color: black;
   text-align: center;
   padding: 2%;
   border-radius: 5px;
-  
+  height: auto;
 }
 
 .hr-form {
   width: 80%;
-
 }
 
 form {
   text-align: left;
-  padding-top: 2%;
+  padding: 2% 0 2% 0;
+  max-width: 75%;
+  margin: auto;
+
 }
+
 
 .formlabel {
   display: block;
@@ -48,16 +50,11 @@ form {
   background-color: #F0F0F0;
 }
 
-#registerForm, #loginForm {
-  max-width: 75%;
-  margin-left: auto;
-  margin-right: auto;  
-}
 
 .password-options {
   display: flex;
-  align-items: center;
-  margin-bottom: 2%;
+  margin-top: 10px;
+  padding-bottom: 20px;
 }
 
 .password-options label {
@@ -69,7 +66,6 @@ form {
   color: white;
   width: 100%;
   font-size: 24px;
-  padding: 5px;
   margin-top: 2%;
   border-radius: 5px;
 }
@@ -80,9 +76,9 @@ form {
   font-size: 40px;
 }
 
-.forminfo {
-  margin-top: 0;
-}
+
+
+
 
 @media (max-width: 640px) {
   
@@ -91,6 +87,26 @@ form {
     margin-right: 10px;
   }
 
+  .formlabel {
+    font-size: 20px;
+  }
 
+  .forminput {
+    font-size: 15px;
+  }
+
+  .submit-btn {
+    font-size: 20px;
+  }
+
+  .form-info {
+    font-size: 10px;
+  }
+
+  #successMessage {
+    font-size: 20px;
+  }
+
+  
 
 }

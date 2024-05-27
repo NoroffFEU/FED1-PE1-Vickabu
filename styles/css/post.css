@@ -38,6 +38,15 @@ body {
     max-width: 100%;
 }
 
+p {
+    font-size: 24px;
+}
+
+.endQuote {
+    font-size: 24px;
+    margin-top: 5%;
+}
+
 /*Buttons*/
 
 button {
@@ -70,7 +79,6 @@ button {
 
 .delete-button {
     background: black;
-    display: block;
     text-align: right;
 }
 
@@ -82,7 +90,91 @@ button {
 .navigation-btn {
     justify-content: space-between;
     display: flex;
-    max-width: 1526px;
+    max-width: 1100px;
     margin-left: auto;
     margin-right: auto;  
+}
+
+.endQuote {
+    text-align: center;
+    font-weight: 500;
+}
+
+
+
+
+
+@media (max-width: 1080px) {
+
+
+    button {
+        font-size: 20px;
+    }
+
+    .endQuote {
+        font-size: 20px;
+    }
+
+    #blogpost-container {
+        max-width: 90%;
+    }
+
+    .navigation-btn {
+        max-width: 90%; 
+        margin-top: 2%;
+        margin-bottom: 5%;
+    }
+
+
+}
+
+
+@media (max-width: 640px) {
+
+
+    button {
+        font-size: 15px;
+    }
+
+    .endQuote {
+        font-size: 15px;
+    }
+
+    .publish-info {
+        flex-wrap: wrap;
+    }
+
+    .posted-by-date {
+        font-size: 15px;
+    }
+
+    .avatar-image {
+        max-height: 40px;
+        padding-right: 5px;
+    }
+    
+}
+
+
+@media (max-width: 450px) {
+
+
+    #display-container {
+        grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+    }
+
+    
+    button {
+        font-size: 12px;
+    }
+
+    .endQuote {
+        font-size: 12px;
+    }
+
+    .posted-by-date {
+        font-size: 12px;
+    }
+
+
 }
