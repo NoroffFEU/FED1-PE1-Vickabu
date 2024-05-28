@@ -44,7 +44,7 @@ function validateForm() {
 
     const nameRegex = /^[\w]{1,20}$/;
     if (!nameRegex.test(name)) {
-        errorMessage += "Username must contain only letters.\n";
+        errorMessage += "Username must contain only letters and underscore.\n";
     }
 
     const emailRegex = /^[\w\-.]+@(stud\.)?noroff\.no$/;
