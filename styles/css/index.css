@@ -76,7 +76,26 @@ main {
     border-radius: 5px; 
 }
 
+.edit-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: rgb(53, 40, 40, 85%);
+    box-shadow: 0 2px 2px 0px #352828;
+    color: white;
+    border: 1px solid black;
+    padding: 5px 10px;
+    border-radius: 0 5px 0 5px;
+}
 
+.fa-solid.fa-pencil {
+    padding-right: 10px;
+}
+
+.edit-button:hover {
+    background-color: #352828;
+    
+}
 
 .blogcard-info {
     position: absolute;

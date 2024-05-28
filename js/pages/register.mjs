@@ -1,10 +1,9 @@
 import { doFetch } from "../utils/doFetch.mjs";
 import { API_REGISTER_URL } from "../utils/constants.mjs";
-
-
+import { showLoader, hideLoader } from '../utils/loader.mjs';
 
 const registerForm = document.querySelector('#registerForm');
-registerForm.addEventListener('submit', (event) => {
+registerForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const formData = new FormData(registerForm);
     const postData = {
@@ -13,23 +12,26 @@ registerForm.addEventListener('submit', (event) => {
         password: formData.get('password'),
     };
 
-    const errorMessage = validateForm();
-    if (errorMessage) {
-        document.getElementById("errorMessage").textContent = errorMessage;
-    } else {
-        document.getElementById("errorMessage").textContent = "";
-        doFetch('POST', API_REGISTER_URL, postData).then(response => {
-            console.log("Registration successful", response);
-            document.getElementById("form-info").style.display = "none";
-            document.getElementById("registerForm").style.display = "none";
-            document.getElementById("successMessage").style.display = "block";
-            setTimeout(() => {
-                window.location.href = "../account/login.html"; 
-            }, 3000);
-        }).catch(error => {
-            console.error('Registration failed', error);
-            document.getElementById("errorMessage").textContent = "Registration failed.";
-        });
+    showLoader(); 
+
+    try {
+        const errorMessage = validateForm();
+        if (errorMessage) {
+            throw new Error(errorMessage);
+        }
+
+        const response = await doFetch('POST', API_REGISTER_URL, postData);
+        document.getElementById("form-info").style.display = "none";
+        document.getElementById("registerForm").style.display = "none";
+        document.getElementById("successMessage").style.display = "block";
+        setTimeout(() => {
+            window.location.href = "../account/login.html"; 
+        }, 2000);
+    } catch (error) {
+        console.error('Registration failed', error);
+        document.getElementById("errorMessage").textContent = error.message || "Registration failed.";
+    } finally {
+        hideLoader(); // 
     }
 });
 
@@ -61,7 +63,6 @@ function validateForm() {
     return errorMessage;
 }
 
-
 const passwordInput = document.getElementById("password");
 const confirmPasswordInput = document.getElementById("confirmPassword");
 const togglePasswordCheckbox = document.getElementById("togglePasswordCheckbox");
@@ -82,3 +83,4 @@ function togglePassword(inputField) {
         inputField.type = "password";
     }
 }
+

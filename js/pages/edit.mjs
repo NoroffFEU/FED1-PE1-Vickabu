@@ -1,6 +1,7 @@
 import { doFetch } from '../utils/doFetch.mjs';
 import { API_USER_URL } from '../utils/constants.mjs';
 import { checkUserLoggedIn } from '../utils/checkAuth.mjs';
+import { showLoader, hideLoader } from '../utils/loader.mjs';
 
 async function getBlogPost() {
     if (!checkUserLoggedIn()) {
@@ -8,9 +9,18 @@ async function getBlogPost() {
         window.location.href = "../account/login.html";
         return;
     } 
+    showLoader(); 
+    
     const id = new URLSearchParams(window.location.search).get('id');
-    const response = await doFetch('GET', `${API_USER_URL}/${id}`);
-    populateForm(response);
+    try {
+        const response = await doFetch('GET', `${API_USER_URL}/${id}`);
+        populateForm(response);
+    } catch (error) {
+        console.error('Error fetching blog post:', error);
+        alert('Failed to load blog post');
+    } finally {
+        hideLoader(); 
+    }
 }
 
 function populateForm(blogPost) {

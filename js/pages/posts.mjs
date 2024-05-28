@@ -1,21 +1,36 @@
 import { API_USER_URL } from "../utils/constants.mjs";
 import { doFetch } from "../utils/doFetch.mjs";
+import { showLoader, hideLoader } from "../utils/loader.mjs";
 
 let allBlogPosts = [];
 let currentPostIndex = null;
 
 async function getAllBlogPosts() {
-    const response = await doFetch('GET', API_USER_URL);
-    allBlogPosts = response;
+    showLoader(); 
+    try {
+        const response = await doFetch('GET', API_USER_URL);
+        allBlogPosts = response;
+    } catch (error) {
+        console.error("Error fetching all blog posts:", error);
+    } finally {
+        hideLoader(); 
+    }
 }
 
 async function getBlogPostId() {
-    const id = new URLSearchParams(window.location.search).get('id');
-    const response = await doFetch('GET', `${API_USER_URL}/${id}`);
-    await getAllBlogPosts();
-    currentPostIndex = allBlogPosts.findIndex(post => post.id === response.id);
-    generateBlogCard(response);
-    updateNavigationButtons();
+    showLoader(); 
+    try {
+        const id = new URLSearchParams(window.location.search).get('id');
+        const response = await doFetch('GET', `${API_USER_URL}/${id}`);
+        await getAllBlogPosts();
+        currentPostIndex = allBlogPosts.findIndex(post => post.id === response.id);
+        generateBlogCard(response);
+        updateNavigationButtons();
+    } catch (error) {
+        console.error("Error fetching blog post by ID:", error);
+    } finally {
+        hideLoader(); 
+    }
 }
 
 function generateBlogCard(blogPost) {
@@ -67,6 +82,7 @@ function generateBlogCard(blogPost) {
         deleteButton.addEventListener('click', async () => {
             const confirmDelete = confirm('Are you sure you want to delete this post?');
             if (confirmDelete) {
+                showLoader(); 
                 try {
                     await doFetch('DELETE', `${API_USER_URL}/${blogPost.id}`);
                     alert('Post deleted successfully');
@@ -74,6 +90,8 @@ function generateBlogCard(blogPost) {
                 } catch (error) {
                     console.error('Error deleting post:', error);
                     alert('Failed to delete post');
+                } finally {
+                    hideLoader(); 
                 }
             }
         });
@@ -121,8 +139,13 @@ function navigateToPreviousPost() {
 }
 
 window.addEventListener('DOMContentLoaded', async () => {
-    await getAllBlogPosts();
-    await getBlogPostId();
+    showLoader(); 
+    try {
+        await getAllBlogPosts();
+        await getBlogPostId();
+    } finally {
+        hideLoader(); 
+    }
 
     const nextButton = document.getElementById('next-button');
     const prevButton = document.getElementById('prev-button');
@@ -130,5 +153,3 @@ window.addEventListener('DOMContentLoaded', async () => {
     nextButton.addEventListener('click', navigateToNextPost);
     prevButton.addEventListener('click', navigateToPreviousPost);
 });
-
-getBlogPostId();

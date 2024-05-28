@@ -1,6 +1,7 @@
 import { doFetch } from "../utils/doFetch.mjs";
 import { API_USER_URL } from "../utils/constants.mjs";
 import { checkUserLoggedIn } from "../utils/checkAuth.mjs";
+import { showLoader, hideLoader } from '../utils/loader.mjs';
 
 function checkIfLoggedIn() {
     if (!checkUserLoggedIn()) {
@@ -16,17 +17,12 @@ const urlInput = document.getElementById('createurl');
 const editor = document.getElementById('editor');
 const imgFrame = document.querySelector('.img-frame');
 const noImgFrame = document.querySelector('.no-img-frame');
-
-
 const contentError = document.getElementById('contentError');
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault();
-
     contentError.textContent = '';
-
     let isValid = true;
-
 
     if (!editor.innerHTML.trim()) {
         contentError.textContent = 'Content is required!';
@@ -52,10 +48,13 @@ form.addEventListener('submit', async (event) => {
     };
 
     try {
+        showLoader(); 
         await doFetch('POST', API_USER_URL, postData);
+        hideLoader(); 
         alert('Post created successfully!');
         window.location.href = `../index.html`;
     } catch (error) {
+        hideLoader(); 
         console.error('Error creating post:', error);
         alert('Failed to create post. Please try again.');
     }

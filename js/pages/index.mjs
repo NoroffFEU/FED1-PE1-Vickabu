@@ -1,14 +1,22 @@
 import { doFetch } from '../utils/doFetch.mjs';
 import { API_USER_URL } from '../utils/constants.mjs';
 import { displayCarousel } from '../utils/carousel.mjs';
+import { showLoader, hideLoader } from '../utils/loader.mjs';
 
 const postsPerPage = 12;
 let totalDisplayedPosts = 12;
 
 async function renderHomePage(totalPosts = totalDisplayedPosts) {
-    const blogPosts = await doFetch('GET', API_USER_URL);
-    displayCarousel(blogPosts);
-    displayBlogCards(blogPosts, totalPosts);
+    showLoader();
+    try {
+        const blogPosts = await doFetch('GET', API_USER_URL);
+        displayCarousel(blogPosts);
+        displayBlogCards(blogPosts, totalPosts);
+    } catch (error) {
+        console.error("Error fetching blog posts:", error);
+    } finally {
+        hideLoader();
+    }
 }
 
 const viewAllBtn = document.getElementById('filter-all');
@@ -114,6 +122,21 @@ export function generateBlogCard(blogPost) {
     blogcardInfo.append(heading, date);
     blogCardLink.append(blogCardImg, blogcardInfo);
     blogCardContainer.append(blogCardLink);
+
+    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    if (userInfo && userInfo.data.accessToken) {
+        const editButton = document.createElement('button');
+        const editIcon = document.createElement('i');
+        editIcon.classList.add('fa-solid', 'fa-pencil');
+        editButton.appendChild(editIcon);
+        editButton.innerHTML += ' Edit'; 
+        editButton.classList.add('edit-button');
+        editButton.addEventListener('click', () => {
+            window.location.href = `./post/edit.html?id=${blogPost.id}`;
+        });
+        blogCardContainer.appendChild(editButton);
+    }
+
     blogCardWrapper.appendChild(blogCardContainer);
     return blogCardWrapper;
 }
