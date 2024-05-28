@@ -56,7 +56,6 @@ button {
     border: solid black 1px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 20px;
     font-weight: 500;
 }
 
@@ -72,6 +71,10 @@ button {
     background: #9F576B;
 }
 
+.edit-button:hover, #next-button:hover  {
+    background: #542532;
+}
+
 
 .edit-button {
     margin: 0;
@@ -82,8 +85,17 @@ button {
     text-align: right;
 }
 
+.delete-button:hover {
+    background: rgb(110, 5, 5);
+    color: white;
+}
+
 #prev-button {
     background-color: #52303A;
+}
+
+#prev-button:hover {
+    background: #9F576B;
 }
 
 
@@ -107,9 +119,6 @@ button {
 @media (max-width: 1080px) {
 
 
-    button {
-        font-size: 20px;
-    }
 
     .endQuote {
         font-size: 20px;
@@ -132,9 +141,6 @@ button {
 @media (max-width: 640px) {
 
 
-    button {
-        font-size: 15px;
-    }
 
     .endQuote {
         font-size: 15px;
@@ -162,12 +168,7 @@ button {
     #display-container {
         grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
     }
-
     
-    button {
-        font-size: 12px;
-    }
-
     .endQuote {
         font-size: 12px;
     }

@@ -7,8 +7,7 @@ body {
 
 
 .post-container {
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     max-width: 615px;
     color: white;
     text-align: center;
@@ -20,6 +19,11 @@ body {
   height: 300px;
   background-color: rgb(217, 217, 217, 15%);
   margin-bottom: 20px;
+}
+
+#imagePreview {
+  object-fit: cover;
+  object-position: center;
 }
 
 .no-img-frame {
@@ -43,13 +47,13 @@ form {
     
   }
   
-  label {
+label {
     display: block;
     margin-bottom: 2%;
     font-size: 24px;
   }
   
-  input {
+input {
     width: 100%;
     margin-bottom: 2%;
     font-size: 20px;
@@ -59,7 +63,8 @@ form {
     display: inline-flex;
   }
   
-  fieldset {
+
+fieldset {
     border: none;
     display: inline-flex;
     justify-content: space-between;
@@ -68,7 +73,11 @@ form {
     padding: 20px 0 20px 0;
   }
 
-  #editor {
+.check-box {
+    display: flex;
+  }
+
+#editor {
     max-width: 100%;
     height: 200px;
     border: 1px solid black;
@@ -79,30 +88,28 @@ form {
     border-radius: 5px;
   }
   
-  #editor::-webkit-scrollbar {
+#editor::-webkit-scrollbar {
     width: 20px;
   }
 
-  #editor::-webkit-scrollbar-track {
+#editor::-webkit-scrollbar-track {
     background-color: rgb(53, 40, 40, 65%);
   }
 
-  #editor::-webkit-scrollbar-thumb {
+#editor::-webkit-scrollbar-thumb {
     background-color: rgb(53, 40, 40, 65%);
   }
 
-  #editor::-webkit-scrollbar-thumb:hover {
+#editor::-webkit-scrollbar-thumb:hover {
     background: #352828; 
   }
 
 
-  button {
+button {
     display: block;
-    font-size: 20px;
-    cursor: pointer;
   }
 
-  .submit-btn {
+.submit-btn {
     width: 50%;
     background-color: #9F576B;
     border: solid black 1px;
@@ -112,11 +119,11 @@ form {
     margin: 0 auto 5% auto;
   }
   
-  .submit-btn:hover {
-    background-color: #542532;
+.submit-btn:hover {
+    background: #542532;
   }
 
-  #cancel-btn {
+#cancel-btn {
     background-color: rgb(255, 255, 255);
     color: black;
     margin: auto;
@@ -124,17 +131,17 @@ form {
     border-radius: 5px;
   }
 
-  #cancel-btn:hover {
+#cancel-btn:hover {
     background-color: rgb(69, 69, 69);
     color: white;
   }
 
-  .negativ-btn-container {
+.negativ-btn-container {
     display: flex;
     justify-content: space-between;
   }
 
-  #delete-btn {
+#delete-btn {
     margin: auto;
     background-color: black;
     border: solid black 1px;
@@ -143,10 +150,13 @@ form {
     border-radius: 5px;
   }
 
-  #delete-btn:hover {
-    background-color: rgb(255, 0, 0);
+#delete-btn:hover {
+    background: rgb(110, 5, 5);
     color: white;
   }
+
+
+
 
   @media (max-width: 680px) {
 
@@ -162,8 +172,10 @@ form {
       font-size: 15px;
     }
 
-    button {
-      font-size: 10px;
+    .img-frame {
+      height: 250px;
     }
+
+  
 
   }

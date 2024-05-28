@@ -79,9 +79,11 @@
     border: solid black 1px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 20px;
-    font-weight: 500;
-    
+    font-weight: 500;   
+}
+
+.info-frame button:hover {
+    background-color: #542532;
 }
 
 

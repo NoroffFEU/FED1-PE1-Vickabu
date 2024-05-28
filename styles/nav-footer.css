@@ -37,6 +37,10 @@ nav a {
     color: white;
 }
 
+nav a:hover {
+    text-decoration: underline;
+}
+
 .admin-nav {
     text-align: right;
     font-size: 20px;
@@ -75,6 +79,11 @@ nav a {
     display: none;
     z-index: 1;
     position: static;
+}
+
+.small-nav li a:hover {
+    box-shadow: 2px 2px 2px 0 rgb(0, 0, 0, 25%);
+    text-decoration: none;
 }
 
 .hamburger {
@@ -136,6 +145,9 @@ footer a {
     padding-top: 3%;
 }
 
+.foot-nav a:hover {
+    text-decoration: underline;
+}
 
 .foot-head {
     text-decoration: underline;
@@ -145,6 +157,10 @@ footer a {
 
 .admin-foot {
     text-align: center;
+}
+
+.admin-foot a:hover {
+    text-decoration: underline;
 }
 
 

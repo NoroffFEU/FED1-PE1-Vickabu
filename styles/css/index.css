@@ -17,7 +17,6 @@ main {
 }
 
 
-
 .filter-posts {
     padding: 2%;
 }
@@ -32,6 +31,7 @@ main {
 
 .filter-button:hover {
     text-decoration: underline;
+    box-shadow: none;
 }
 
 .pagination-btn {
@@ -39,7 +39,6 @@ main {
     margin-right: auto;
     background: #9F576B;
     color: white;
-    font-size: 20px;
     cursor: pointer;
     padding: 5px 20px;
     border: solid black 1px;
@@ -179,9 +178,6 @@ main {
         font-size: 15px;
     }
 
-    .pagination-btn {
-        font-size: 15px;
-    }
 
     .endQuote {
         font-size: 15px;
@@ -199,12 +195,9 @@ main {
     }
 
     .filter-button {
-        font-size: 12px;
+        font-size: 10px;
     }
     
-    .pagination-btn {
-        font-size: 12px;
-    }
 
     .endQuote {
         font-size: 12px;
