@@ -47,6 +47,13 @@ form {
     
   }
   
+.error-message {
+    color: red;
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+
 label {
     display: block;
     margin-bottom: 2%;
