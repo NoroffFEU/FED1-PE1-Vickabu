@@ -18,7 +18,7 @@ export async function doFetch (method, url, body) {
 
     } catch (error) {
        console.error('Error fetching' + error);
-        
+
     } 
 }
 

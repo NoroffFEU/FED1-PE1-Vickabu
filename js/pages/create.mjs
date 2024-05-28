@@ -56,7 +56,7 @@ form.addEventListener('submit', async (event) => {
     } catch (error) {
         hideLoader(); 
         console.error('Error creating post:', error);
-        alert('Failed to create post. Please try again.');
+        alert("Oops! Looks like creating your pawsome post didn't go as planned. Let's give it another go, shall we? 🐾");
     }
 });
 

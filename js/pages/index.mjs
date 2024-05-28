@@ -2,6 +2,7 @@ import { doFetch } from '../utils/doFetch.mjs';
 import { API_USER_URL } from '../utils/constants.mjs';
 import { displayCarousel } from '../utils/carousel.mjs';
 import { showLoader, hideLoader } from '../utils/loader.mjs';
+import { displayErrorMessage } from '../utils/errorMessage.mjs';
 
 const postsPerPage = 12;
 let totalDisplayedPosts = 12;
@@ -14,6 +15,7 @@ async function renderHomePage(totalPosts = totalDisplayedPosts) {
         displayBlogCards(blogPosts, totalPosts);
     } catch (error) {
         console.error("Error fetching blog posts:", error);
+        displayErrorMessage("Uh-oh! Seems like fetching blog posts hit a snag. Try again later when our digital fetcher is feeling less ruff!")
     } finally {
         hideLoader();
     }

@@ -2,6 +2,7 @@ import { doFetch } from '../utils/doFetch.mjs';
 import { API_USER_URL } from '../utils/constants.mjs';
 import { checkUserLoggedIn } from '../utils/checkAuth.mjs';
 import { showLoader, hideLoader } from '../utils/loader.mjs';
+import { displayErrorMessage } from '../utils/errorMessage.mjs';
 
 async function getBlogPost() {
     if (!checkUserLoggedIn()) {
@@ -17,7 +18,7 @@ async function getBlogPost() {
         populateForm(response);
     } catch (error) {
         console.error('Error fetching blog post:', error);
-        alert('Failed to load blog post');
+        displayErrorMessage("Oops! Looks like we couldn't fetch our pawsome blog posts this time. Please try again later.🐾");
     } finally {
         hideLoader(); 
     }
@@ -89,7 +90,7 @@ document.getElementById('delete-btn').addEventListener('click', async () => {
             window.location.href = '../index.html';
         } catch (error) {
             console.error('Error deleting the post:', error);
-            alert('Failed to delete the post');
+            alert('Whoops! Looks like Noah is holding onto that post tight! Try giving it another shot');
         }
     }
 });

@@ -1,5 +1,6 @@
 import { API_USER_URL } from "../utils/constants.mjs";
 import { doFetch } from "../utils/doFetch.mjs";
+import { displayErrorMessage } from "../utils/errorMessage.mjs";
 import { showLoader, hideLoader } from "../utils/loader.mjs";
 
 let allBlogPosts = [];
@@ -28,6 +29,7 @@ async function getBlogPostId() {
         updateNavigationButtons();
     } catch (error) {
         console.error("Error fetching blog post by ID:", error);
+        displayErrorMessage("Looks like there's a hiccup in fetching that blog post! Time to send our digital detectives on the case.🕵️‍♂️")
     } finally {
         hideLoader(); 
     }
@@ -89,7 +91,7 @@ function generateBlogCard(blogPost) {
                     window.location.href = '../index.html';
                 } catch (error) {
                     console.error('Error deleting post:', error);
-                    alert('Failed to delete post');
+                    alert('Whoops! Looks like Noah is holding onto that post tight! Try giving it another shot');
                 } finally {
                     hideLoader(); 
                 }
