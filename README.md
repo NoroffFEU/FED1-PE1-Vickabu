@@ -1,9 +1,13 @@
 # FED1 Project Exam 1
 
 Introduction
-Welcome to Noah Pawlicious's blog project! This repository contains the content and resources for Noah's delightful adventures. 
-Noah, a charming 2.5 kg Chihuahua from Norway, shares his tales of exploration and joy to entertain and inspire fellow canine enthusiasts. 
-This blog is a platform for showcasing his adventures, promoting responsible pet ownership, and fostering a sense of community among pet lovers.
+Welcome to Noah Pawlicious's blog project! 
+This repository contains the content and resources for Noah's delightful adventures. 
+Noah, a charming 2.5 kg Chihuahua from Norway, shares his tales of exploration and joy to entertain
+and inspire fellow canine enthusiasts.
+
+This blog is a platform for showcasing his adventures, promoting responsible pet ownership,
+and fostering a sense of community among pet lovers.
 
 Project Overview
 This project documents the development and content of Noah's blog. It includes:
