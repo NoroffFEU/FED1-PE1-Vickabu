@@ -31,7 +31,7 @@ registerForm.addEventListener('submit', async (event) => {
         console.error('Registration failed', error);
         document.getElementById("errorMessage").textContent = error.message || "Registration failed.";
     } finally {
-        hideLoader(); // 
+        hideLoader(); 
     }
 });
 

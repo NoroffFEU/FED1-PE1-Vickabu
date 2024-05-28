@@ -81,7 +81,7 @@ document.getElementById('cancel-btn').addEventListener('click', () => {
 
 document.getElementById('delete-btn').addEventListener('click', async () => {
     const id = new URLSearchParams(window.location.search).get('id');
-    const confirmation = confirm('Are you sure you want to delete this post?');
+    const confirmation = confirm('Are you sure you want to delete this pawsome post?');
 
     if (confirmation) {
         try {
