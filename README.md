@@ -68,7 +68,7 @@ Please do not use, distribute, or reproduce any images or text without permissio
 
 ### Installing
 
-To get a local copy up and running, follow these simple steps.
+Get a local copy:
 
 1. Clone the repo:
 
