@@ -1,5 +1,7 @@
 # Project Exam 1: Noah Pawlicious's blog. 
 
+![image](https://github.com/NoroffFEU/FED1-PE1-Vickabu/blob/main/assets/noah_1.png?raw=true)
+
 Welcome to Noah Pawlicious's blog project! 
 This repository contains the content and resources for Noah's delightful adventures. 
 Noah, a charming 2.5 kg Chihuahua from Norway, shares his tales of exploration and joy to entertain and inspire fellow canine enthusiasts.
